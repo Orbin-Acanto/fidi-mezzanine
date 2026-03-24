@@ -18,7 +18,7 @@ export default function ContactSection() {
           <h2 className="section-title">
             <span className="relative inline-block">
               <span className="relative z-10">Contact</span>
-              <span className="absolute bottom-2 left-0 w-full h-3 bg-primary/20 -z-0" />
+              {/* <span className="absolute bottom-2 left-0 w-full h-3 bg-primary/20 -z-0" /> */}
             </span>{" "}
             Us
           </h2>
@@ -54,7 +54,7 @@ export default function ContactSection() {
               <input
                 type="hidden"
                 name="returnURL"
-                defaultValue="https://www.fidimezzanine.com/thankyou.html"
+                defaultValue="https://www.fidimezzanine.com/thank-you"
               />
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -161,7 +161,7 @@ export default function ContactSection() {
             <div className="bg-white overflow-hidden">
               <div className="relative h-64">
                 <Image
-                  src="https://placehold.co/600x400/1a1a1a/d2b371"
+                  src="/gallery/32.png"
                   alt="The Mezzanine Building"
                   fill
                   sizes="(max-width: 1024px) 100vw, 33vw"

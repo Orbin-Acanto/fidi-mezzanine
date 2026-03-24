@@ -40,7 +40,7 @@ export default function GallerySection() {
     if (selectedImage !== null)
       setSelectedImage(
         (selectedImage - 1 + siteConfig.gallery.length) %
-          siteConfig.gallery.length
+          siteConfig.gallery.length,
       );
   };
 
@@ -57,18 +57,16 @@ export default function GallerySection() {
 
   return (
     <AnimatedSection id="gallery" className="py-16 md:py-20 bg-white">
-      {/* Header */}
       <div className="max-w-4xl mx-auto text-center mb-12 px-4">
         <h2 className="section-title">
           <span className="relative inline-block">
             <span className="relative z-10">Photo</span>
-            <span className="absolute bottom-2 left-0 w-full h-3 bg-primary/20 -z-0" />
+            {/* <span className="absolute bottom-2 left-0 w-full h-3 bg-primary/20 -z-0" /> */}
           </span>{" "}
           Gallery
         </h2>
       </div>
 
-      {/* Masonry Grid */}
       <motion.div
         ref={ref}
         variants={containerVariants}
@@ -83,7 +81,6 @@ export default function GallerySection() {
             className="relative group cursor-pointer overflow-hidden mb-1.5 sm:mb-2 break-inside-avoid"
             onClick={() => openLightbox(index)}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={image.src}
               alt={image.alt}
@@ -109,7 +106,6 @@ export default function GallerySection() {
         ))}
       </motion.div>
 
-      {/* Lightbox */}
       <AnimatePresence>
         {selectedImage !== null && (
           <motion.div
@@ -119,37 +115,69 @@ export default function GallerySection() {
             className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
             onClick={closeLightbox}
           >
-            {/* Close */}
             <button
               className="absolute top-4 right-4 w-12 h-12 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors z-10"
               onClick={closeLightbox}
             >
-              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <svg
+                className="w-7 h-7"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </button>
 
-            {/* Prev */}
             <button
               className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors z-10"
-              onClick={(e) => { e.stopPropagation(); prevImage(); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                prevImage();
+              }}
             >
-              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              <svg
+                className="w-7 h-7"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
             </button>
 
-            {/* Next */}
             <button
               className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors z-10"
-              onClick={(e) => { e.stopPropagation(); nextImage(); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                nextImage();
+              }}
             >
-              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              <svg
+                className="w-7 h-7"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </button>
 
-            {/* Image */}
             <motion.div
               key={selectedImage}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -167,7 +195,6 @@ export default function GallerySection() {
               />
             </motion.div>
 
-            {/* Counter */}
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-sm font-medium tracking-wider">
               {selectedImage + 1} / {siteConfig.gallery.length}
             </div>

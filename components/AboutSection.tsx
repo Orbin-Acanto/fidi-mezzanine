@@ -43,7 +43,7 @@ export default function AboutSection() {
             <h2 className="section-title">
               <span className="relative inline-block">
                 <span className="relative z-10">{siteConfig.venue.name}</span>
-                <span className="absolute bottom-2 left-0 w-full h-3 bg-primary/20 -z-0" />
+                {/* <span className="absolute bottom-2 left-0 w-full h-3 bg-primary/20 -z-0" /> */}
               </span>
             </h2>
             <p className="text-2xl md:text-3xl font-light text-gray-700 mb-8">
