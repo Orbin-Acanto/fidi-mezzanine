@@ -48,7 +48,7 @@ export default function Header() {
         isScrolled ? "border-[#e7dfd2] shadow-sm" : "border-transparent"
       }`}
     >
-      <div className="mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex items-center justify-between px-4 sm:px-16 2xl:px-48">
         <Link href="/" className="relative z-50 flex shrink-0 items-center">
           <Image
             src="/logo/FIDI Mezzanine.png"
