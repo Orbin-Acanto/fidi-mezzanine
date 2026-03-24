@@ -7,7 +7,7 @@ import siteConfig from "@/config/siteConfig";
 
 export default function ContactSection() {
   return (
-    <AnimatedSection id="contact" className="py-20 md:py-32 bg-gray-50">
+    <AnimatedSection id="contact" className="py-16 md:py-20 bg-gray-50">
       <Script
         src="https://www.google.com/recaptcha/api.js"
         strategy="lazyOnload"

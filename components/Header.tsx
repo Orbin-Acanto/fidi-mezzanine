@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { usePathname } from 'next/navigation';
-import siteConfig from '@/config/siteConfig';
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import siteConfig from "@/config/siteConfig";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,144 +16,160 @@ export default function Header() {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   const scrollToSection = (href: string) => {
-    if (href.startsWith('#')) {
+    if (href.startsWith("#")) {
       const element = document.querySelector(href);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-        setIsMobileMenuOpen(false);
+        element.scrollIntoView({ behavior: "smooth" });
       }
     }
+    setIsMobileMenuOpen(false);
   };
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md py-3' : 'bg-white/95 py-4'
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 bg-white py-4 ${
+        isScrolled ? "border-[#e7dfd2] shadow-sm" : "border-transparent"
       }`}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="relative z-10">
-            <div className="flex items-center space-x-2">
-              <div className="text-2xl font-serif font-bold text-gray-900">
-                THE <span className="text-primary">MEZZANINE</span>
-              </div>
-            </div>
-          </Link>
+      <div className="mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="relative z-50 flex shrink-0 items-center">
+          <Image
+            src="/logo/FIDI Mezzanine.png"
+            alt="The Mezzanine"
+            width={180}
+            height={50}
+            className="h-9 w-auto sm:h-10"
+            priority
+          />
+        </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            {siteConfig.navigation.map((item) => {
-              const isExternal = item.href.startsWith('/');
-              
-              if (isExternal) {
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`text-sm font-medium tracking-wide transition-colors hover:text-primary ${
-                      pathname === item.href ? 'text-primary' : 'text-gray-700'
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              }
+        <nav className="hidden xl:flex items-center gap-8">
+          {siteConfig.navigation.map((item) => {
+            const isPageLink = item.href.startsWith("/");
 
+            if (isPageLink) {
               return (
-                <button
+                <Link
                   key={item.href}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-sm font-medium tracking-wide text-gray-700 transition-colors hover:text-primary"
+                  href={item.href}
+                  className={`text-sm font-medium tracking-[0.08em] transition-colors ${
+                    pathname === item.href
+                      ? "text-[#c8a96b]"
+                      : "text-[#3f3a34] hover:text-[#c8a96b]"
+                  }`}
                 >
                   {item.label}
-                </button>
+                </Link>
               );
-            })}
-          </nav>
+            }
 
-          {/* CTA Button */}
-          <div className="hidden lg:block">
+            return (
+              <button
+                key={item.href}
+                onClick={() => scrollToSection(item.href)}
+                className="text-sm font-medium tracking-[0.08em] text-[#3f3a34] transition-colors hover:text-[#c8a96b]"
+              >
+                {item.label}
+              </button>
+            );
+          })}
+        </nav>
+
+        <div className="hidden xl:block">
+          <button
+            onClick={() => scrollToSection("#contact")}
+            className="inline-flex min-h-[46px] items-center justify-center border border-[#c8a96b] bg-[#c8a96b] px-5 text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[#b89345]"
+          >
+            Secure Your Date
+          </button>
+        </div>
+
+        <button
+          className="relative z-50 flex h-10 w-10 items-center justify-center xl:hidden"
+          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          aria-label="Toggle menu"
+          aria-expanded={isMobileMenuOpen}
+        >
+          <span
+            className={`absolute h-0.5 w-6 bg-[#111111] transition-all duration-300 ${
+              isMobileMenuOpen ? "rotate-45" : "-translate-y-2"
+            }`}
+          />
+          <span
+            className={`absolute h-0.5 w-6 bg-[#111111] transition-all duration-300 ${
+              isMobileMenuOpen ? "opacity-0" : "opacity-100"
+            }`}
+          />
+          <span
+            className={`absolute h-0.5 w-6 bg-[#111111] transition-all duration-300 ${
+              isMobileMenuOpen ? "-rotate-45" : "translate-y-2"
+            }`}
+          />
+        </button>
+
+        <div
+          className={`fixed inset-y-0 right-0 w-[85%] sm:w-[380px] z-40 bg-white transition-transform duration-300 xl:hidden ${
+            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <div className="flex min-h-screen flex-col px-6 pb-8 pt-24">
+            <nav className="flex flex-1 flex-col justify-center gap-7">
+              {siteConfig.navigation.map((item) => {
+                const isPageLink = item.href.startsWith("/");
+
+                if (isPageLink) {
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={`text-2xl font-medium tracking-[0.06em] transition-colors ${
+                        pathname === item.href
+                          ? "text-[#c8a96b]"
+                          : "text-[#222222]"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                }
+
+                return (
+                  <button
+                    key={item.href}
+                    onClick={() => scrollToSection(item.href)}
+                    className="text-left text-2xl font-medium tracking-[0.06em] text-[#222222] transition-colors hover:text-[#c8a96b]"
+                  >
+                    {item.label}
+                  </button>
+                );
+              })}
+            </nav>
+
             <button
-              onClick={() => scrollToSection('#contact')}
-              className="btn-primary"
+              onClick={() => scrollToSection("#contact")}
+              className="mt-8 inline-flex min-h-[54px] text-white w-full items-center justify-center border border-[#c8a96b] bg-[#c8a96b] px-6 text-sm font-semibold uppercase tracking-[0.12em] "
             >
               Secure Your Date
             </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden relative z-10 w-10 h-10 flex flex-col items-center justify-center space-y-1.5"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            <span
-              className={`block w-6 h-0.5 bg-gray-900 transition-all duration-300 ${
-                isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
-              }`}
-            />
-            <span
-              className={`block w-6 h-0.5 bg-gray-900 transition-all duration-300 ${
-                isMobileMenuOpen ? 'opacity-0' : ''
-              }`}
-            />
-            <span
-              className={`block w-6 h-0.5 bg-gray-900 transition-all duration-300 ${
-                isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
-              }`}
-            />
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        <div
-          className={`lg:hidden fixed inset-0 bg-white z-40 transition-transform duration-300 ${
-            isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
-        >
-          <nav className="flex flex-col items-center justify-center h-full space-y-8">
-            {siteConfig.navigation.map((item) => {
-              const isExternal = item.href.startsWith('/');
-              
-              if (isExternal) {
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={`text-2xl font-medium tracking-wide transition-colors hover:text-primary ${
-                      pathname === item.href ? 'text-primary' : 'text-gray-700'
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              }
-
-              return (
-                <button
-                  key={item.href}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-2xl font-medium tracking-wide text-gray-700 transition-colors hover:text-primary"
-                >
-                  {item.label}
-                </button>
-              );
-            })}
-            <button
-              onClick={() => scrollToSection('#contact')}
-              className="btn-primary mt-8"
-            >
-              Secure Your Date
-            </button>
-          </nav>
         </div>
       </div>
     </header>

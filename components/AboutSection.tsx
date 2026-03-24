@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import AnimatedSection from './AnimatedSection';
-import siteConfig from '@/config/siteConfig';
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import AnimatedSection from "./AnimatedSection";
+import siteConfig from "@/config/siteConfig";
 
 export default function AboutSection() {
   const [ref, inView] = useInView({
@@ -31,7 +31,7 @@ export default function AboutSection() {
   };
 
   return (
-    <AnimatedSection id="about" className="py-20 md:py-32 bg-gray-50">
+    <AnimatedSection id="about" className="py-16 md:py-20 bg-gray-50">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="max-w-4xl mx-auto text-center mb-16">
@@ -57,8 +57,8 @@ export default function AboutSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-gray-600 mb-6"
           >
-            Historic charm. Modern service. An intimate, flexible mezzanine venue for corporate
-            meetings, launches and private celebrations.
+            Historic charm. Modern service. An intimate, flexible mezzanine
+            venue for corporate meetings, launches and private celebrations.
           </motion.p>
 
           <motion.p
@@ -76,10 +76,11 @@ export default function AboutSection() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-base text-gray-600"
           >
-            With over {siteConfig.venue.squareFeet.toLocaleString()} square feet across{' '}
-            {siteConfig.venue.spaces} versatile spaces, The Mezzanine accommodates a wide range of
-            premier events, from high-impact corporate conferences and product launches to private
-            celebrations, milestone dinners, and cocktail receptions for up to{' '}
+            With over {siteConfig.venue.squareFeet.toLocaleString()} square feet
+            across {siteConfig.venue.spaces} versatile spaces, The Mezzanine
+            accommodates a wide range of premier events, from high-impact
+            corporate conferences and product launches to private celebrations,
+            milestone dinners, and cocktail receptions for up to{" "}
             {siteConfig.venue.capacity.max} guests.
           </motion.p>
         </div>
@@ -89,7 +90,7 @@ export default function AboutSection() {
           ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
+          animate={inView ? "visible" : "hidden"}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {siteConfig.eventTypes.map((eventType) => (
@@ -109,7 +110,9 @@ export default function AboutSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <h3 className="text-lg font-bold tracking-wide mb-2">{eventType.title}</h3>
+                <h3 className="text-lg font-bold tracking-wide mb-2">
+                  {eventType.title}
+                </h3>
                 <p className="text-sm text-gray-200">{eventType.subtitle}</p>
               </div>
             </motion.div>

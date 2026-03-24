@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import FloorPlansContent from "@/components/FloorPlansContent";
 
 export const metadata: Metadata = {
@@ -17,13 +15,5 @@ export const metadata: Metadata = {
 };
 
 export default function FloorPlansPage() {
-  return (
-    <main className="min-h-screen">
-      <Header />
-      <div className="pt-24">
-        <FloorPlansContent />
-      </div>
-      <Footer />
-    </main>
-  );
+  return <FloorPlansContent />;
 }

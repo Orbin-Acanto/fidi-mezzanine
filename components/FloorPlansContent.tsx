@@ -1,258 +1,122 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import AnimatedSection from './AnimatedSection';
+import Image from "next/image";
 
-interface FloorPlan {
-  id: string;
-  name: string;
-  description: string;
-  capacity: {
-    seated?: number;
-    standing?: number;
-  };
-  dimensions: string;
-  image: string;
-  features: string[];
-}
-
-const floorPlans: FloorPlan[] = [
-  {
-    id: 'main-space',
-    name: 'Main Space',
-    description: 'Our largest and most versatile space, perfect for receptions, presentations, and large gatherings.',
-    capacity: {
-      seated: 120,
-      standing: 200,
-    },
-    dimensions: '3,500 sq ft',
-    image: 'https://placehold.co/1200x800/1a1a1a/d2b371?text=Main+Space+Floor+Plan',
-    features: [
-      'Floor-to-ceiling windows',
-      'Built-in AV system',
-      'Flexible seating arrangements',
-      'Adjacent bar area',
-      'Natural lighting',
-    ],
-  },
-  {
-    id: 'conference-area',
-    name: 'Conference Area',
-    description: 'Professional meeting space ideal for corporate gatherings, workshops, and presentations.',
-    capacity: {
-      seated: 40,
-      standing: 60,
-    },
-    dimensions: '1,200 sq ft',
-    image: 'https://placehold.co/1200x800/1a1a1a/d2b371?text=Conference+Area+Floor+Plan',
-    features: [
-      'Presentation equipment',
-      'Whiteboard walls',
-      'Conference table setup',
-      'High-speed WiFi',
-      'Privacy dividers available',
-    ],
-  },
-  {
-    id: 'reading-room',
-    name: 'Reading Room',
-    description: 'Intimate space perfect for breakout sessions, cocktail hours, or small gatherings.',
-    capacity: {
-      seated: 30,
-      standing: 50,
-    },
-    dimensions: '800 sq ft',
-    image: 'https://placehold.co/1200x800/1a1a1a/d2b371?text=Reading+Room+Floor+Plan',
-    features: [
-      'Cozy lounge seating',
-      'Ambient lighting',
-      'Book-lined walls',
-      'Quiet atmosphere',
-      'Connected to main space',
-    ],
-  },
-  {
-    id: 'full-buyout',
-    name: 'Full Venue Buyout',
-    description: 'Rent the entire venue for maximum flexibility and exclusive use of all spaces.',
-    capacity: {
-      seated: 150,
-      standing: 300,
-    },
-    dimensions: '6,300 sq ft',
-    image: 'https://placehold.co/1200x800/1a1a1a/d2b371?text=Full+Venue+Floor+Plan',
-    features: [
-      'All four spaces included',
-      'Multiple bar stations',
-      'Complete venue exclusivity',
-      'Multiple room configurations',
-      'Full production capabilities',
-    ],
-  },
+const highlights = [
+  "6,300 sq ft venue",
+  "4 flexible rooms",
+  "Up to 400 guests standing",
+  "Designer interiors and lounge furniture",
+  "Floor to ceiling windows",
+  "Built for private and corporate events",
 ];
 
 export default function FloorPlansContent() {
-  const [selectedPlan, setSelectedPlan] = useState<FloorPlan>(floorPlans[0]);
-
   return (
-    <div className="py-20 md:py-32">
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <AnimatedSection className="max-w-4xl mx-auto text-center mb-16">
-          <h1 className="text-5xl md:text-6xl font-serif mb-6">
-            <span className="relative inline-block">
-              <span className="relative z-10">Floor</span>
-              <span className="absolute bottom-2 left-0 w-full h-3 bg-primary/20 -z-0" />
-            </span>{' '}
-            Plans
-          </h1>
-          <p className="text-xl text-gray-600">
-            Explore our versatile spaces and find the perfect layout for your event
+    <section className="bg-[#f7f4ee] py-24 pb-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Preheader */}
+        <div className="mb-6 text-center">
+          <h2 className="text-xl font-semibold tracking-tight text-[#111111] md:text-2xl">
+            Discover the Mezzanine Experience
+          </h2>
+          <p className="mt-2 text-sm leading-6 text-[#5f5a52] md:text-base">
+            This section helps you get a quick preview of the layout, key specs,
+            and download options before booking.
           </p>
-        </AnimatedSection>
+        </div>
 
-        {/* Floor Plan Selector */}
-        <AnimatedSection className="mb-12">
-          <div className="flex flex-wrap justify-center gap-4">
-            {floorPlans.map((plan) => (
-              <button
-                key={plan.id}
-                onClick={() => setSelectedPlan(plan)}
-                className={`px-6 py-3 text-sm font-medium tracking-wide transition-all ${
-                  selectedPlan.id === plan.id
-                    ? 'bg-primary text-white'
-                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
-                }`}
+        {/* Header */}
+        <div className="mb-8 md:mb-10">
+          <span className="inline-block border border-[#c6a55b] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#c6a55b]">
+            Floor Plan
+          </span>
+
+          <div className="mt-4 max-w-3xl">
+            <h1 className="text-3xl font-semibold tracking-tight text-[#111111] md:text-5xl">
+              Explore The Mezzanine Layout
+            </h1>
+            <p className="mt-3 max-w-2xl text-sm leading-7 text-[#5f5a52] md:text-base">
+              View the full venue layout, download the plan, and get a quick
+              look at the space.
+            </p>
+          </div>
+        </div>
+
+        {/* Main layout */}
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
+          {/* Image side */}
+          <div className="lg:col-span-8">
+            <div className="border border-[#d9d1c3] bg-white">
+              <div className="relative aspect-[4/3] md:aspect-[16/11]">
+                <Image
+                  src="/plan/Mezzanine Floor Plan.jpg"
+                  alt="The Mezzanine Venue Floor Plan"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 70vw"
+                  className="object-contain p-4 md:p-6"
+                />
+              </div>
+            </div>
+
+            <a
+              href="/plan/Mezzanine Floor Plan.pdf"
+              download
+              className="mt-4 inline-flex min-h-[54px] w-full items-center justify-center gap-3 border border-[#c6a55b] bg-[#c6a55b] px-6 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#b89345]"
+            >
+              <svg
+                className="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                {plan.name}
-              </button>
-            ))}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 10v6m0 0l-3-3m3 3l3-3M4 17v2a1 1 0 001 1h14a1 1 0 001-1v-2"
+                />
+              </svg>
+              Download Floor Plan PDF
+            </a>
           </div>
-        </AnimatedSection>
 
-        {/* Selected Floor Plan Details */}
-        <motion.div
-          key={selectedPlan.id}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="max-w-6xl mx-auto"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* Floor Plan Image */}
-            <div className="relative aspect-[4/3] bg-gray-100 overflow-hidden">
-              <Image
-                src={selectedPlan.image}
-                alt={`${selectedPlan.name} Floor Plan`}
-                fill
-                sizes="(max-width: 1024px) 100vw, 66vw"
-                className="object-contain"
-              />
-            </div>
-
-            {/* Details */}
-            <div className="space-y-6">
-              <div>
-                <h2 className="text-4xl font-serif mb-4">{selectedPlan.name}</h2>
-                <p className="text-lg text-gray-600">{selectedPlan.description}</p>
+          {/* Highlights side */}
+          <div className="lg:col-span-4">
+            <div className="flex h-full flex-col border border-[#d9d1c3] bg-[#f4f0e7] text-[#111111]">
+              <div className="border-b border-[#d9d1c3] px-6 py-6 md:px-8">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#c6a55b]">
+                  Space Highlights
+                </p>
+                <h2 className="mt-3 text-2xl font-semibold leading-tight md:text-3xl">
+                  Clean, flexible, event ready
+                </h2>
               </div>
 
-              {/* Capacity */}
-              <div className="grid grid-cols-2 gap-4">
-                {selectedPlan.capacity.seated && (
-                  <div className="bg-gray-50 p-6">
-                    <div className="text-3xl font-bold text-primary mb-2">
-                      {selectedPlan.capacity.seated}
+              <div className="flex-1 px-6 py-6 md:px-8">
+                <div className="space-y-0 border-t border-white/10">
+                  {highlights.map((item) => (
+                    <div
+                      key={item}
+                      className="flex items-start gap-3 border-b border-[#d9d1c3] py-4"
+                    >
+                      <span className="mt-2 h-2 w-2 flex-shrink-0 bg-[#c6a55b]" />
+                      <p className="text-sm leading-6 text-[#333333]">{item}</p>
                     </div>
-                    <div className="text-sm text-gray-600 uppercase tracking-wide">
-                      Seated Capacity
-                    </div>
-                  </div>
-                )}
-                {selectedPlan.capacity.standing && (
-                  <div className="bg-gray-50 p-6">
-                    <div className="text-3xl font-bold text-primary mb-2">
-                      {selectedPlan.capacity.standing}
-                    </div>
-                    <div className="text-sm text-gray-600 uppercase tracking-wide">
-                      Standing Capacity
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Dimensions */}
-              <div className="bg-gray-50 p-6">
-                <div className="text-sm text-gray-600 uppercase tracking-wide mb-2">
-                  Dimensions
-                </div>
-                <div className="text-2xl font-bold text-gray-900">{selectedPlan.dimensions}</div>
-              </div>
-
-              {/* Features */}
-              <div>
-                <h3 className="text-xl font-semibold mb-4">Features</h3>
-                <ul className="space-y-3">
-                  {selectedPlan.features.map((feature, index) => (
-                    <li key={index} className="flex items-start">
-                      <svg
-                        className="w-6 h-6 text-primary flex-shrink-0 mr-3"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      <span className="text-gray-700">{feature}</span>
-                    </li>
                   ))}
-                </ul>
+                </div>
               </div>
 
-              {/* CTA */}
-              <div className="pt-6">
-                <a href="/#contact" className="btn-primary inline-block">
-                  Request a Tour
-                </a>
+              <div className="border-t border-[#d9d1c3] px-6 py-5 md:px-8">
+                <p className="text-xs uppercase tracking-[0.18em] text-[#5f5a52]">
+                  Lower Manhattan event venue
+                </p>
               </div>
             </div>
           </div>
-        </motion.div>
-
-        {/* Additional Info Section */}
-        <AnimatedSection className="mt-20 bg-gray-50 p-8 md:p-12 max-w-4xl mx-auto">
-          <h3 className="text-2xl font-serif mb-6 text-center">Planning Your Event</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-600">
-            <div>
-              <h4 className="font-semibold text-gray-900 mb-3">Setup Options</h4>
-              <ul className="space-y-2 text-sm">
-                <li>• Theater-style seating</li>
-                <li>• Banquet rounds</li>
-                <li>• Cocktail reception</li>
-                <li>• Classroom setup</li>
-                <li>• Custom configurations</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-gray-900 mb-3">What's Included</h4>
-              <ul className="space-y-2 text-sm">
-                <li>• Tables and chairs</li>
-                <li>• Basic AV equipment</li>
-                <li>• WiFi access</li>
-                <li>• Event coordination</li>
-                <li>• Setup and breakdown</li>
-              </ul>
-            </div>
-          </div>
-        </AnimatedSection>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

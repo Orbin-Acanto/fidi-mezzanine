@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import AnimatedSection from './AnimatedSection';
-import siteConfig from '@/config/siteConfig';
+import { useState } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import AnimatedSection from "./AnimatedSection";
+import siteConfig from "@/config/siteConfig";
 
 export default function GallerySection() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
@@ -34,12 +34,12 @@ export default function GallerySection() {
 
   const openLightbox = (index: number) => {
     setSelectedImage(index);
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
   };
 
   const closeLightbox = () => {
     setSelectedImage(null);
-    document.body.style.overflow = 'unset';
+    document.body.style.overflow = "unset";
   };
 
   const nextImage = () => {
@@ -51,66 +51,66 @@ export default function GallerySection() {
   const prevImage = () => {
     if (selectedImage !== null) {
       setSelectedImage(
-        (selectedImage - 1 + siteConfig.gallery.length) % siteConfig.gallery.length
+        (selectedImage - 1 + siteConfig.gallery.length) %
+          siteConfig.gallery.length,
       );
     }
   };
 
   return (
-    <AnimatedSection id="gallery" className="py-20 md:py-32 bg-white">
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <h2 className="section-title">
-            <span className="relative inline-block">
-              <span className="relative z-10">Photo</span>
-              <span className="absolute bottom-2 left-0 w-full h-3 bg-primary/20 -z-0" />
-            </span>{' '}
-            Gallery
-          </h2>
-        </div>
-
-        {/* Gallery Grid */}
-        <motion.div
-          ref={ref}
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-        >
-          {siteConfig.gallery.map((image, index) => (
-            <motion.div
-              key={image.id}
-              variants={itemVariants}
-              className="relative aspect-square group cursor-pointer overflow-hidden"
-              onClick={() => openLightbox(index)}
-            >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
-                <svg
-                  className="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
-                  />
-                </svg>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+    <AnimatedSection id="gallery" className="py-16 md:py-20 bg-white">
+      {/* Header */}
+      <div className="max-w-4xl mx-auto text-center mb-16 px-4">
+        <h2 className="section-title">
+          <span className="relative inline-block">
+            <span className="relative z-10">Photo</span>
+            <span className="absolute bottom-2 left-0 w-full h-3 bg-primary/20 -z-0" />
+          </span>{" "}
+          Gallery
+        </h2>
       </div>
+
+      {/* Pinterest Masonry Grid */}
+      <motion.div
+        ref={ref}
+        variants={containerVariants}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        className="columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-2 px-2"
+      >
+        {siteConfig.gallery.map((image, index) => (
+          <motion.div
+            key={image.id}
+            variants={itemVariants}
+            className="relative group cursor-pointer overflow-hidden mb-2 break-inside-avoid"
+            onClick={() => openLightbox(index)}
+          >
+            <Image
+              src={image.src}
+              alt={image.alt}
+              width={800}
+              height={parseInt(image.src.match(/800x(\d+)/)?.[1] || "600")}
+              sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
+              className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
+              <svg
+                className="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+                />
+              </svg>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
 
       {/* Lightbox */}
       <AnimatePresence>
@@ -127,7 +127,12 @@ export default function GallerySection() {
               className="absolute top-4 right-4 w-12 h-12 flex items-center justify-center text-white hover:bg-white/10 transition-colors z-10"
               onClick={closeLightbox}
             >
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg
+                className="w-8 h-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -145,8 +150,18 @@ export default function GallerySection() {
                 prevImage();
               }}
             >
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              <svg
+                className="w-8 h-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
             </button>
 
@@ -158,8 +173,18 @@ export default function GallerySection() {
                 nextImage();
               }}
             >
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              <svg
+                className="w-8 h-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </button>
 

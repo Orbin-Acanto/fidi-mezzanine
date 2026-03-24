@@ -14,9 +14,9 @@ const config: Config = {
         'primary-light': '#e4ca9a',
       },
       fontFamily: {
-        sans: ['var(--font-roboto)'],
-        serif: ['var(--font-old-standard)'],
-        slab: ['var(--font-zilla-slab)'],
+        sans: ['var(--font-gilda-display)'],
+        serif: ['var(--font-gilda-display)'],
+        heading: ['var(--font-montserrat)'],
       },
     },
   },
