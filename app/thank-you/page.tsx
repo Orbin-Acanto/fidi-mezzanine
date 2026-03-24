@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import React, { useEffect } from 'react';
-import { InlineWidget } from 'react-calendly';
+import React, { useEffect } from "react";
+import { InlineWidget } from "react-calendly";
 
 export default function ThankYouScheduling() {
   useEffect(() => {
-    const link = document.createElement('link');
-    link.href = 'https://assets.calendly.com/assets/external/widget.css';
-    link.rel = 'stylesheet';
+    const link = document.createElement("link");
+    link.href = "https://assets.calendly.com/assets/external/widget.css";
+    link.rel = "stylesheet";
     document.head.appendChild(link);
   }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-amber-50">
       <div className="h-22" />
-      <div className="container mx-auto px-4 py-8 md:py-12">
+      <div className="container mx-auto px-4 py-24 md:py-26 lg:py-32">
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
             <h1 className="mb-6 text-2xl font-bold md:text-3xl lg:text-5xl">
@@ -40,15 +40,15 @@ export default function ThankYouScheduling() {
             <InlineWidget
               url="https://calendly.com/mmeconsult/mme-appointment"
               styles={{
-                height: '800px',
-                minWidth: '100%',
+                height: "800px",
+                minWidth: "100%",
               }}
               pageSettings={{
-                backgroundColor: 'ffffff',
+                backgroundColor: "ffffff",
                 hideEventTypeDetails: false,
                 hideLandingPageDetails: false,
-                primaryColor: 'd2b371',
-                textColor: '0a0a0a',
+                primaryColor: "d2b371",
+                textColor: "0a0a0a",
               }}
             />
           </div>
