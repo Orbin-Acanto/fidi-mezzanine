@@ -60,7 +60,7 @@ export default function Header() {
           />
         </Link>
 
-        <nav className="hidden xl:flex items-center gap-8">
+        <nav className="hidden xl:flex items-center gap-8 font-heading uppercase">
           {siteConfig.navigation.map((item) => {
             const isPageLink = item.href.startsWith("/");
 
@@ -69,7 +69,7 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`text-sm font-medium tracking-[0.08em] transition-colors ${
+                  className={`text-sm font-medium tracking-[0.08em] transition-colors  ${
                     pathname === item.href
                       ? "text-[#c8a96b]"
                       : "text-[#3f3a34] hover:text-[#c8a96b]"
@@ -84,7 +84,7 @@ export default function Header() {
               <button
                 key={item.href}
                 onClick={() => scrollToSection(item.href)}
-                className="text-sm font-medium tracking-[0.08em] text-[#3f3a34] transition-colors hover:text-[#c8a96b]"
+                className="font-heading uppercase text-sm font-medium tracking-[0.08em] text-[#3f3a34] transition-colors hover:text-[#c8a96b]"
               >
                 {item.label}
               </button>
@@ -95,7 +95,7 @@ export default function Header() {
         <div className="hidden xl:block">
           <button
             onClick={() => scrollToSection("#contact")}
-            className="inline-flex min-h-[46px] items-center justify-center border border-[#c8a96b] bg-[#c8a96b] px-5 text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[#b89345]"
+            className="font-heading inline-flex min-h-[46px] items-center justify-center border border-[#c8a96b] bg-[#c8a96b] px-5 text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[#b89345]"
           >
             Secure Your Date
           </button>
@@ -130,7 +130,7 @@ export default function Header() {
           }`}
         >
           <div className="flex min-h-screen flex-col px-6 pb-8 pt-24">
-            <nav className="flex flex-1 flex-col justify-center gap-7">
+            <nav className="flex flex-1 flex-col justify-center gap-7 font-heading uppercase">
               {siteConfig.navigation.map((item) => {
                 const isPageLink = item.href.startsWith("/");
 
@@ -155,7 +155,7 @@ export default function Header() {
                   <button
                     key={item.href}
                     onClick={() => scrollToSection(item.href)}
-                    className="text-left text-2xl font-medium tracking-[0.06em] text-[#222222] transition-colors hover:text-[#c8a96b]"
+                    className="font-heading uppercase text-left text-2xl font-medium tracking-[0.06em] text-[#222222] transition-colors hover:text-[#c8a96b]"
                   >
                     {item.label}
                   </button>
@@ -165,7 +165,7 @@ export default function Header() {
 
             <button
               onClick={() => scrollToSection("#contact")}
-              className="mt-8 inline-flex min-h-[54px] text-white w-full items-center justify-center border border-[#c8a96b] bg-[#c8a96b] px-6 text-sm font-semibold uppercase tracking-[0.12em] "
+              className="font-heading mt-8 inline-flex min-h-[54px] text-white w-full items-center justify-center border border-[#c8a96b] bg-[#c8a96b] px-6 text-sm font-semibold uppercase tracking-[0.12em] "
             >
               Secure Your Date
             </button>
