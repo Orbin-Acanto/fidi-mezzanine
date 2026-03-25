@@ -15,7 +15,7 @@ export default function ContactSection() {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="max-w-4xl mx-auto text-center mb-16">
-          <h2 className="section-title">
+          <h2 className="section-title font-heading uppercase tracking-wide">
             <span className="relative inline-block">
               <span className="relative z-10">Contact</span>
               {/* <span className="absolute bottom-2 left-0 w-full h-3 bg-primary/20 -z-0" /> */}

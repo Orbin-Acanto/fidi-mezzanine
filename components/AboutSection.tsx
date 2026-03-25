@@ -41,7 +41,7 @@ export default function AboutSection() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="section-title">
-              <span className="relative inline-block">
+              <span className="relative inline-block font-heading uppercase tracking-wide">
                 <span className="relative z-10">{siteConfig.venue.name}</span>
                 {/* <span className="absolute bottom-2 left-0 w-full h-3 bg-primary/20 -z-0" /> */}
               </span>
@@ -109,7 +109,7 @@ export default function AboutSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
               </div>
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white font-heading">
                 <h3 className="text-lg font-bold tracking-wide mb-2">
                   {eventType.title}
                 </h3>

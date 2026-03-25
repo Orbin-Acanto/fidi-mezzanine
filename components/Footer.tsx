@@ -18,7 +18,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#2a2a2a] text-gray-300 border-t-4 border-primary">
+    <footer className="bg-[#223228] text-gray-300 border-t-4 border-primary">
       {/* Main Footer */}
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 lg:gap-12">

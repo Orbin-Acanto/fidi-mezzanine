@@ -58,7 +58,7 @@ export default function GallerySection() {
   return (
     <AnimatedSection id="gallery" className="py-16 md:py-20 bg-white">
       <div className="max-w-4xl mx-auto text-center mb-12 px-4">
-        <h2 className="section-title">
+        <h2 className="section-title font-heading uppercase tracking-wide">
           <span className="relative inline-block">
             <span className="relative z-10">Photo</span>
             {/* <span className="absolute bottom-2 left-0 w-full h-3 bg-primary/20 -z-0" /> */}
