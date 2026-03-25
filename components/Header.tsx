@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import siteConfig from "@/config/siteConfig";
 
 export default function Header() {
@@ -32,11 +32,17 @@ export default function Header() {
     };
   }, [isMobileMenuOpen]);
 
+  const router = useRouter();
+
   const scrollToSection = (href: string) => {
     if (href.startsWith("#")) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+      if (pathname !== "/") {
+        router.push(`/${href}`);
+      } else {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
       }
     }
     setIsMobileMenuOpen(false);
@@ -165,7 +171,7 @@ export default function Header() {
 
             <button
               onClick={() => scrollToSection("#contact")}
-              className="font-heading mt-8 inline-flex min-h-[54px] text-white w-full items-center justify-center border border-[#c8a96b] bg-[#c8a96b] px-6 text-sm font-semibold uppercase tracking-[0.12em] "
+              className="font-heading mt-8 inline-flex min-h-[54px] text-white w-full items-center justify-center border border-[#c8a96b] bg-[#c8a96b] px-6 text-sm font-semibold uppercase tracking-[0.12em]"
             >
               Secure Your Date
             </button>
