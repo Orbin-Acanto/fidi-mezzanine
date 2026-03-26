@@ -143,7 +143,7 @@ const siteConfig: SiteConfig = {
       },
       {
         id: 4,
-        image: "/slider/4.jpg",
+        image: "/slider/4.jpeg",
         title: "Where Business Meets Elegance",
         subtitle: "CORPORATE EVENTS WITH A SOPHISTICATED EDGE",
       },
@@ -179,7 +179,7 @@ const siteConfig: SiteConfig = {
       id: "film",
       title: "FILM/TV SHOOTS",
       subtitle: "A unique location offering stunning visual production value.",
-      image: "/events/film.jpg",
+      image: "/events/film.jpeg",
     },
   ],
 
@@ -212,7 +212,7 @@ const siteConfig: SiteConfig = {
     {
       id: "meeting-room",
       name: "Meeting Room",
-      image: "/spaces/meeting-rooms.jpg",
+      image: "/spaces/meeting-rooms.jpeg",
     },
   ],
 
@@ -229,7 +229,7 @@ const siteConfig: SiteConfig = {
     { id: 10, src: "/gallery/10.jpg", alt: "The Mezzanine Gallery Image 10" },
     { id: 11, src: "/gallery/11.jpeg", alt: "The Mezzanine Gallery Image 11" },
     { id: 12, src: "/gallery/12.jpg", alt: "The Mezzanine Gallery Image 12" },
-    { id: 13, src: "/gallery/13.jpg", alt: "The Mezzanine Gallery Image 13" },
+    { id: 13, src: "/gallery/13.jpeg", alt: "The Mezzanine Gallery Image 13" },
     { id: 14, src: "/gallery/14.jpg", alt: "The Mezzanine Gallery Image 14" },
     { id: 15, src: "/gallery/15.jpg", alt: "The Mezzanine Gallery Image 15" },
     { id: 16, src: "/gallery/16.jpeg", alt: "The Mezzanine Gallery Image 16" },
@@ -242,7 +242,7 @@ const siteConfig: SiteConfig = {
     { id: 23, src: "/gallery/23.jpg", alt: "The Mezzanine Gallery Image 23" },
     { id: 24, src: "/gallery/24.png", alt: "The Mezzanine Gallery Image 24" },
     { id: 25, src: "/gallery/25.jpg", alt: "The Mezzanine Gallery Image 25" },
-    { id: 26, src: "/gallery/26.jpg", alt: "The Mezzanine Gallery Image 26" },
+    { id: 26, src: "/gallery/26.jpeg", alt: "The Mezzanine Gallery Image 26" },
     { id: 27, src: "/gallery/27.jpg", alt: "The Mezzanine Gallery Image 27" },
     { id: 28, src: "/gallery/28.png", alt: "The Mezzanine Gallery Image 28" },
     { id: 29, src: "/gallery/29.jpg", alt: "The Mezzanine Gallery Image 29" },
@@ -250,12 +250,13 @@ const siteConfig: SiteConfig = {
     { id: 31, src: "/gallery/31.jpg", alt: "The Mezzanine Gallery Image 31" },
     { id: 32, src: "/gallery/32.png", alt: "The Mezzanine Gallery Image 32" },
     { id: 33, src: "/gallery/33.jpeg", alt: "The Mezzanine Gallery Image 33" },
-    { id: 34, src: "/gallery/34.jpg", alt: "The Mezzanine Gallery Image 34" },
+    { id: 34, src: "/gallery/34.jpeg", alt: "The Mezzanine Gallery Image 34" },
     { id: 35, src: "/gallery/35.jpg", alt: "The Mezzanine Gallery Image 35" },
     { id: 36, src: "/gallery/36.jpg", alt: "The Mezzanine Gallery Image 36" },
     { id: 37, src: "/gallery/37.jpeg", alt: "The Mezzanine Gallery Image 37" },
     { id: 38, src: "/gallery/38.jpg", alt: "The Mezzanine Gallery Image 38" },
     { id: 39, src: "/gallery/39.png", alt: "The Mezzanine Gallery Image 39" },
+    { id: 40, src: "/gallery/40.jpeg", alt: "The Mezzanine Gallery Image 40" },
   ],
 
   navigation: [
