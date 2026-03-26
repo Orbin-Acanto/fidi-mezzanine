@@ -254,7 +254,7 @@ const siteConfig: SiteConfig = {
     { id: 35, src: "/gallery/35.jpg", alt: "The Mezzanine Gallery Image 35" },
     { id: 36, src: "/gallery/36.jpg", alt: "The Mezzanine Gallery Image 36" },
     { id: 37, src: "/gallery/37.jpeg", alt: "The Mezzanine Gallery Image 37" },
-    { id: 38, src: "/gallery/38.jpg", alt: "The Mezzanine Gallery Image 38" },
+    { id: 38, src: "/gallery/38.jpeg", alt: "The Mezzanine Gallery Image 38" },
     { id: 39, src: "/gallery/39.png", alt: "The Mezzanine Gallery Image 39" },
     { id: 40, src: "/gallery/40.jpeg", alt: "The Mezzanine Gallery Image 40" },
   ],
