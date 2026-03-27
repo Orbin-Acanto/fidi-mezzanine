@@ -25,7 +25,7 @@ export default function HeroSlider() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-5xl md:text-7xl font-heading mb-6 uppercase tracking-wide"
           >
-            Welcome to The Mezzanine
+            Welcome to The FiDi Mezzanine
           </motion.h1>
           <motion.p
             initial={{ y: 30, opacity: 0 }}
@@ -41,9 +41,10 @@ export default function HeroSlider() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-base md:text-lg text-white/80 max-w-2xl mx-auto leading-relaxed"
           >
-            FiDi&apos;s most stylish event venue — 6,300 sq ft of
-            industrial-chic design on 55 Broadway, crafted for unforgettable
-            experiences.
+            FiDi&apos;s most stylish event venue, 6,300 sq ft of industrial-chic
+            design
+            <br />
+            on 55 Broadway, crafted for unforgettable experiences.
           </motion.p>
         </div>
       </div>

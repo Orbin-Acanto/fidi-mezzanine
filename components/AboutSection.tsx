@@ -58,7 +58,8 @@ export default function AboutSection() {
             className="text-lg text-gray-600 mb-6"
           >
             Historic charm. Modern service. An intimate, flexible mezzanine
-            venue for corporate meetings, launches and private celebrations.
+            venue for corporate meetings, <br />
+            launches and private celebrations.
           </motion.p>
 
           <motion.p
