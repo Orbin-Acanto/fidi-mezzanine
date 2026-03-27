@@ -25,7 +25,8 @@ export default function HeroSlider() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-5xl md:text-7xl font-heading mb-6 uppercase tracking-wide"
           >
-            Welcome to The FiDi Mezzanine
+            Welcome to The <br />
+            FiDi Mezzanine
           </motion.h1>
           <motion.p
             initial={{ y: 30, opacity: 0 }}
