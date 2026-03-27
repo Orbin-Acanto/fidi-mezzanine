@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat, Gilda_Display } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import siteConfig from "@/config/siteConfig";
 import Header from "@/components/Header";
@@ -75,6 +76,20 @@ export default function RootLayout({
       lang="en"
       className={`${montserrat.variable} ${gildaDisplay.variable}`}
     >
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-PNJMGZL35D"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-PNJMGZL35D');
+          `}
+        </Script>
+      </head>
       <body className={gildaDisplay.className}>
         <Header />
         <main className="pt-18 min-h-screen">{children}</main>
