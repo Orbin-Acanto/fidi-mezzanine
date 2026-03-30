@@ -17,7 +17,7 @@ export default function HeroSlider() {
         />
       </div>
 
-      <div className="relative z-20 container mx-auto px-4 h-full flex items-center justify-center">
+      {/* <div className="relative z-20 container mx-auto px-4 h-full flex items-center justify-center">
         <div className="text-center text-white max-w-4xl">
           <motion.h1
             initial={{ y: 30, opacity: 0 }}
@@ -48,7 +48,7 @@ export default function HeroSlider() {
             on 55 Broadway, crafted for unforgettable experiences.
           </motion.p>
         </div>
-      </div>
+      </div> */}
 
       <motion.div
         initial={{ opacity: 0, y: -20 }}
