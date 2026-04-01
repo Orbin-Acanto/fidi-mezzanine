@@ -46,7 +46,7 @@ export default function FeatureSection() {
         <div className="order-1 lg:order-2 relative h-96 lg:h-auto overflow-hidden">
           <motion.div style={{ y }} className="absolute inset-0 scale-110">
             <Image
-              src="/gallery/26.jpg"
+              src="/gallery/26.jpeg"
               alt="The Mezzanine Interior"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
