@@ -81,10 +81,12 @@ export default function GallerySection() {
             className="relative group cursor-pointer overflow-hidden mb-1.5 sm:mb-2 break-inside-avoid"
             onClick={() => openLightbox(index)}
           >
-            <img
+            <Image
               src={image.src}
               alt={image.alt}
-              loading="lazy"
+              width={800}
+              height={600}
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
               className="w-full h-auto block transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">

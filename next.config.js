@@ -11,6 +11,7 @@ const nextConfig = {
         hostname: "placehold.co",
       },
     ],
+    formats: ["image/avif", "image/webp"],
     qualities: [75, 90],
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",
