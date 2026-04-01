@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Script from "next/script";
 import AnimatedSection from "./AnimatedSection";
 import siteConfig from "@/config/siteConfig";
@@ -160,12 +159,16 @@ export default function ContactSection() {
           <div className="lg:col-span-1">
             <div className="bg-white overflow-hidden">
               <div className="relative h-64">
-                <Image
-                  src="/gallery/32.png"
-                  alt="The Mezzanine Building"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                  className="object-cover"
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.5!2d-74.0126!3d40.7074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1759b7e491%3A0x8c2c4b20d47b9a20!2s55%20Broadway%2C%20New%20York%2C%20NY%2010006!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="The Mezzanine Location"
+                  className="absolute inset-0"
                 />
               </div>
               <div className="p-6 space-y-4">
