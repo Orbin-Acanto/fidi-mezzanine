@@ -40,7 +40,7 @@ export default function FloorPlansContent() {
       </section>
 
       {/* Main content */}
-      <section className="bg-white py-16 pb-0 md:py-20 md:pb-0">
+      <section className="bg-white py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="mb-8 md:mb-10">
