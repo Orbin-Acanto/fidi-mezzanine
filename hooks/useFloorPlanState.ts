@@ -224,6 +224,118 @@ export const useFloorPlanState = () => {
     [updateFurniture]
   );
 
+  // Rotate a group of items as a single unit around their shared centroid.
+  // Each item's position is orbited around the centroid by `angleDeg`, and
+  // its own rotation is incremented by the same amount.
+  const rotateGroup = useCallback(
+    (ids: Set<string>, angleDeg: number) => {
+      if (ids.size < 2) return;
+      updateFloorPlan((prev) => {
+        const targets = prev.furniture.filter((f) => ids.has(f.id));
+        if (targets.length === 0) return prev;
+
+        // Centroid of all selected items
+        const cx = targets.reduce((s, f) => s + f.position.x, 0) / targets.length;
+        const cy = targets.reduce((s, f) => s + f.position.y, 0) / targets.length;
+
+        const rad = (angleDeg * Math.PI) / 180;
+        const cos = Math.cos(rad);
+        const sin = Math.sin(rad);
+
+        const furniture = prev.furniture.map((item) => {
+          if (!ids.has(item.id)) return item;
+          const dx = item.position.x - cx;
+          const dy = item.position.y - cy;
+          return {
+            ...item,
+            position: {
+              x: cx + dx * cos - dy * sin,
+              y: cy + dx * sin + dy * cos,
+            },
+            rotation: ((item.rotation + angleDeg) % 360 + 360) % 360,
+          };
+        });
+
+        return { ...prev, furniture };
+      });
+    },
+    [updateFloorPlan]
+  );
+
+  // Set absolute rotation for the whole group (rotate all items so the group
+  // lands at `targetDeg`, preserving relative orientations).
+  const setGroupRotation = useCallback(
+    (ids: Set<string>, targetDeg: number, currentGroupRotation: number) => {
+      const delta = targetDeg - currentGroupRotation;
+      rotateGroup(ids, delta);
+    },
+    [rotateGroup]
+  );
+
+  // Move all items in a group by the same delta.
+  const nudgeGroup = useCallback(
+    (ids: Set<string>, dx: number, dy: number) => {
+      updateFloorPlan((prev) => ({
+        ...prev,
+        furniture: prev.furniture.map((item) =>
+          ids.has(item.id)
+            ? { ...item, position: { x: item.position.x + dx, y: item.position.y + dy } }
+            : item
+        ),
+      }));
+    },
+    [updateFloorPlan]
+  );
+
+  // Move the group so its centroid lands at (targetX, targetY).
+  const moveGroupCentroid = useCallback(
+    (ids: Set<string>, targetX: number, targetY: number) => {
+      updateFloorPlan((prev) => {
+        const targets = prev.furniture.filter((f) => ids.has(f.id));
+        if (targets.length === 0) return prev;
+        const cx = targets.reduce((s, f) => s + f.position.x, 0) / targets.length;
+        const cy = targets.reduce((s, f) => s + f.position.y, 0) / targets.length;
+        const dx = targetX - cx;
+        const dy = targetY - cy;
+        return {
+          ...prev,
+          furniture: prev.furniture.map((item) =>
+            ids.has(item.id)
+              ? { ...item, position: { x: item.position.x + dx, y: item.position.y + dy } }
+              : item
+          ),
+        };
+      });
+    },
+    [updateFloorPlan]
+  );
+
+  // Set all selected items (must be same-name) to an identical dimension value.
+  const setGroupDimension = useCallback(
+    (ids: Set<string>, key: 'width' | 'height', value: number) => {
+      updateFloorPlan((prev) => ({
+        ...prev,
+        furniture: prev.furniture.map((item) =>
+          ids.has(item.id)
+            ? { ...item, dimensions: { ...item.dimensions, [key]: value } }
+            : item
+        ),
+      }));
+    },
+    [updateFloorPlan]
+  );
+
+  // Delete all items in the group.
+  const deleteGroup = useCallback(
+    (ids: Set<string>) => {
+      updateFloorPlan((prev) => ({
+        ...prev,
+        furniture: prev.furniture.filter((item) => !ids.has(item.id)),
+      }));
+    },
+    [updateFloorPlan]
+  );
+
   // ----------------------------
   // Furniture
   // ----------------------------
@@ -331,6 +443,12 @@ export const useFloorPlanState = () => {
     updateFurniture,
     moveFurniture,
     rotateFurniture,
+    rotateGroup,
+    setGroupRotation,
+    nudgeGroup,
+    moveGroupCentroid,
+    setGroupDimension,
+    deleteGroup,
     deleteFurniture,
     addRoom,
     updateRoom,

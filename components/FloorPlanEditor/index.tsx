@@ -88,6 +88,12 @@ export const FloorPlanEditor: React.FC = () => {
     updateFurniture,
     moveFurniture,
     rotateFurniture,
+    rotateGroup,
+    setGroupRotation,
+    nudgeGroup,
+    moveGroupCentroid,
+    setGroupDimension,
+    deleteGroup,
     addRoom,
     updateRoom,
     deleteRoom,
@@ -792,6 +798,18 @@ export const FloorPlanEditor: React.FC = () => {
             onDelete={handleDelete}
             onClose={() => setShowPropertiesPanel(false)}
             pixelsPerFoot={floorPlan.canvasSettings.scale}
+            selectedFurnitureIds={selectedFurnitureIds}
+            onGroupRotate={(angleDeg) => rotateGroup(selectedFurnitureIds, angleDeg)}
+            onGroupSetRotation={(targetDeg, currentDeg) => setGroupRotation(selectedFurnitureIds, targetDeg, currentDeg)}
+            onGroupNudge={(dx, dy) => nudgeGroup(selectedFurnitureIds, dx, dy)}
+            onGroupMoveCentroid={(x, y) => moveGroupCentroid(selectedFurnitureIds, x, y)}
+            onGroupSetDimension={(key, value) => setGroupDimension(selectedFurnitureIds, key, value)}
+            onGroupDelete={() => {
+              deleteGroup(selectedFurnitureIds);
+              setSelectedFurnitureIds(new Set());
+              setSelectedItemId(null);
+              setSelectedItemType(null);
+            }}
           />
         )}
       </div>

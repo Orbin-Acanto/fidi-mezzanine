@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { DraggableItem } from './DraggableItem';
 import { DECOR_LIBRARY, getDecorCategories } from '@/constants/decorLibrary';
+import { useGlobalSearch } from './useGlobalSearch';
 
 export const DecorSidebar: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -27,6 +28,11 @@ export const DecorSidebar: React.FC = () => {
     return items;
   }, [selectedCategory, searchQuery]);
 
+  const crossResults = useGlobalSearch('Decor/Props', searchQuery);
+  const isSearching = searchQuery.trim().length > 0;
+  const hasCrossResults = crossResults.length > 0;
+  const totalCount = filteredItems.length + crossResults.reduce((sum, g) => sum + g.items.length, 0);
+
   return (
     <div className="flex h-full w-80 flex-col border-r border-gray-200 bg-white">
       {/* Header */}
@@ -40,7 +46,7 @@ export const DecorSidebar: React.FC = () => {
         <div className="relative">
           <input
             type="text"
-            placeholder="Search decor/props..."
+            placeholder="Search all items..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="text-dark-black w-full rounded-lg border border-gray-300 py-2 pr-4 pl-10 text-sm focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
@@ -81,58 +87,99 @@ export const DecorSidebar: React.FC = () => {
         </div>
       </div>
 
-      {/* Categories */}
-      <div className="overflow-x-auto border-b border-gray-200 px-4 py-3">
-        <div className="flex flex-wrap gap-2">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`rounded-full px-3 py-1.5 text-xs font-medium whitespace-nowrap transition-colors ${
-                selectedCategory === category
-                  ? 'bg-primary text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Items Grid */}
-      <div className="flex-1 overflow-y-auto p-4">
-        {filteredItems.length === 0 ? (
-          <div className="flex h-full flex-col items-center justify-center text-gray-400">
-            <svg
-              className="mb-2 h-16 w-16"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
-              />
-            </svg>
-            <p className="text-sm">No items found</p>
-            <p className="mt-1 text-xs">Try different keywords</p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-2 gap-3">
-            {filteredItems.map((item) => (
-              <DraggableItem key={item.id} item={item} />
+      {/* Categories — hidden while searching */}
+      {!isSearching && (
+        <div className="overflow-x-auto border-b border-gray-200 px-4 py-3">
+          <div className="flex flex-wrap gap-2">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`rounded-full px-3 py-1.5 text-xs font-medium whitespace-nowrap transition-colors ${
+                  selectedCategory === category
+                    ? 'bg-primary text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                {category}
+              </button>
             ))}
           </div>
+        </div>
+      )}
+
+      {/* Items */}
+      <div className="flex-1 overflow-y-auto p-4">
+        {isSearching ? (
+          <>
+            {filteredItems.length > 0 && (
+              <div className="mb-4">
+                {hasCrossResults && (
+                  <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-gray-400">
+                    Decor/Props
+                  </p>
+                )}
+                <div className="grid grid-cols-2 gap-3">
+                  {filteredItems.map((item) => (
+                    <DraggableItem key={item.id} item={item} />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {crossResults.map((group) => (
+              <div key={group.source} className="mb-4">
+                <div className="mb-2 flex items-center gap-2">
+                  <p className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">
+                    {group.source}
+                  </p>
+                  <span className="rounded-full bg-gray-100 px-2 py-0.5 text-[10px] text-gray-500">
+                    {group.items.length}
+                  </span>
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  {group.items.map((item) => (
+                    <DraggableItem key={item.id} item={item} />
+                  ))}
+                </div>
+              </div>
+            ))}
+
+            {totalCount === 0 && (
+              <div className="flex h-full flex-col items-center justify-center text-gray-400">
+                <svg className="mb-2 h-16 w-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                </svg>
+                <p className="text-sm">No items found</p>
+                <p className="mt-1 text-xs">Try different keywords</p>
+              </div>
+            )}
+          </>
+        ) : (
+          filteredItems.length === 0 ? (
+            <div className="flex h-full flex-col items-center justify-center text-gray-400">
+              <svg className="mb-2 h-16 w-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+              </svg>
+              <p className="text-sm">No items found</p>
+              <p className="mt-1 text-xs">Try different keywords</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 gap-3">
+              {filteredItems.map((item) => (
+                <DraggableItem key={item.id} item={item} />
+              ))}
+            </div>
+          )
         )}
       </div>
 
       {/* Footer */}
       <div className="border-t border-gray-200 bg-gray-50 px-4 py-3">
         <p className="text-center text-xs text-gray-500">
-          {filteredItems.length} {filteredItems.length === 1 ? 'item' : 'items'}
+          {isSearching
+            ? `${totalCount} ${totalCount === 1 ? 'result' : 'results'} across all categories`
+            : `${filteredItems.length} ${filteredItems.length === 1 ? 'item' : 'items'}`}
         </p>
       </div>
     </div>

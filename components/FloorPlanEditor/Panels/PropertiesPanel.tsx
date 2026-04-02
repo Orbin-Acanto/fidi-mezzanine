@@ -36,6 +36,14 @@ interface PropertiesPanelProps {
   furnitureItems?: FurnitureItem[];
   pixelsPerFoot?: number;
   onLegendUpdate: (items: LegendItemWithCount[]) => void;
+  // Group selection
+  selectedFurnitureIds?: Set<string>;
+  onGroupRotate?: (angleDeg: number) => void;
+  onGroupSetRotation?: (targetDeg: number, currentGroupRotation: number) => void;
+  onGroupNudge?: (dx: number, dy: number) => void;
+  onGroupMoveCentroid?: (x: number, y: number) => void;
+  onGroupSetDimension?: (key: 'width' | 'height', value: number) => void;
+  onGroupDelete?: () => void;
 }
 
 export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
@@ -48,6 +56,13 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
   furnitureItems = [],
   pixelsPerFoot,
   onLegendUpdate,
+  selectedFurnitureIds,
+  onGroupRotate,
+  onGroupSetRotation,
+  onGroupNudge,
+  onGroupMoveCentroid,
+  onGroupSetDimension,
+  onGroupDelete,
 }) => {
   const getLegendItems = () => {
     const items: Array<{
@@ -884,6 +899,171 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
     );
   };
 
+  // GROUP PANEL — shown when 2+ furniture items are selected
+  const renderGroupPanel = () => {
+    const ids = selectedFurnitureIds!;
+    const items = furnitureItems.filter((f) => ids.has(f.id));
+    if (items.length < 2) return null;
+
+    // Centroid
+    const cx = Math.round(items.reduce((s, f) => s + f.position.x, 0) / items.length);
+    const cy = Math.round(items.reduce((s, f) => s + f.position.y, 0) / items.length);
+
+    // Average rotation — used as a reference value for the absolute rotation input
+    const avgRotation = Math.round(
+      items.reduce((s, f) => s + f.rotation, 0) / items.length
+    );
+
+    // Same-name check (name or customName)
+    const firstName = items[0].customName || items[0].name;
+    const allSameName = items.every((f) => (f.customName || f.name) === firstName);
+    const sharedDims = allSameName ? items[0].dimensions : null;
+
+    return (
+      <div className="space-y-5">
+        {/* Group summary */}
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">Group</p>
+          <h4 className="text-base font-semibold text-gray-900">
+            {allSameName ? firstName : 'Mixed selection'}
+          </h4>
+          <p className="mt-0.5 inline-flex items-center rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-medium text-gray-700">
+            {items.length} items selected
+          </p>
+        </div>
+
+        {/* Position — bounding-box centroid */}
+        <div>
+          <label className="mb-1 block text-sm font-medium text-gray-700">
+            Group Center
+          </label>
+          <div className="grid grid-cols-2 gap-2">
+            <div>
+              <span className="text-[10px] text-gray-500">X (center)</span>
+              <input
+                type="number"
+                defaultValue={cx}
+                key={`gx-${cx}`}
+                onBlur={(e) => onGroupMoveCentroid?.(parseFloat(e.target.value) || cx, cy)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') onGroupMoveCentroid?.(parseFloat((e.target as HTMLInputElement).value) || cx, cy);
+                }}
+                className="mt-0.5 w-full rounded-lg border border-gray-300 bg-white px-2 py-1.5 text-xs text-gray-900 focus:ring-2 focus:ring-[#CBA35C]/50 focus:outline-none"
+              />
+            </div>
+            <div>
+              <span className="text-[10px] text-gray-500">Y (center)</span>
+              <input
+                type="number"
+                defaultValue={cy}
+                key={`gy-${cy}`}
+                onBlur={(e) => onGroupMoveCentroid?.(cx, parseFloat(e.target.value) || cy)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') onGroupMoveCentroid?.(cx, parseFloat((e.target as HTMLInputElement).value) || cy);
+                }}
+                className="mt-0.5 w-full rounded-lg border border-gray-300 bg-white px-2 py-1.5 text-xs text-gray-900 focus:ring-2 focus:ring-[#CBA35C]/50 focus:outline-none"
+              />
+            </div>
+          </div>
+          {/* Nudge buttons */}
+          <div className="mt-2 grid grid-cols-4 gap-1 text-[9px]">
+            <button type="button" onClick={() => onGroupNudge?.(0, -5)}
+              className="rounded-md bg-gray-100 py-1 text-center text-gray-700 hover:bg-gray-200">↑ 5</button>
+            <button type="button" onClick={() => onGroupNudge?.(0, 5)}
+              className="rounded-md bg-gray-100 py-1 text-center text-gray-700 hover:bg-gray-200">↓ 5</button>
+            <button type="button" onClick={() => onGroupNudge?.(-5, 0)}
+              className="rounded-md bg-gray-100 py-1 text-center text-gray-700 hover:bg-gray-200">← 5</button>
+            <button type="button" onClick={() => onGroupNudge?.(5, 0)}
+              className="rounded-md bg-gray-100 py-1 text-center text-gray-700 hover:bg-gray-200">→ 5</button>
+          </div>
+        </div>
+
+        {/* Rotation */}
+        <div>
+          <label className="mb-2 block text-sm font-medium text-gray-700">
+            Rotation
+          </label>
+          <div className="flex gap-2">
+            <input
+              type="number"
+              defaultValue={avgRotation}
+              key={`gr-${avgRotation}`}
+              onBlur={(e) => onGroupSetRotation?.(parseFloat(e.target.value) || 0, avgRotation)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') onGroupSetRotation?.(parseFloat((e.target as HTMLInputElement).value) || 0, avgRotation);
+              }}
+              className="flex-1 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:ring-2 focus:ring-[#CBA35C]/60 focus:outline-none"
+              step={15}
+            />
+            <span className="flex items-center text-sm text-gray-500">°</span>
+          </div>
+          {/* Snap presets */}
+          <div className="mt-2 grid grid-cols-4 gap-2 text-[10px]">
+            {[0, 90, 180, 270].map((angle) => (
+              <button key={angle} type="button"
+                onClick={() => onGroupSetRotation?.(angle, avgRotation)}
+                className="rounded-md bg-gray-100 px-2 py-1 text-gray-700 hover:bg-gray-200">
+                {angle}°
+              </button>
+            ))}
+          </div>
+          {/* Relative increment */}
+          <div className="mt-2 flex gap-2 text-[10px]">
+            <button type="button" onClick={() => onGroupRotate?.(-15)}
+              className="flex-1 rounded-lg bg-[#CBA35C] px-3 py-2 text-center font-semibold text-black shadow-sm hover:bg-[#b0914f]">
+              ↶ -15°
+            </button>
+            <button type="button" onClick={() => onGroupRotate?.(15)}
+              className="flex-1 rounded-lg bg-[#CBA35C] px-3 py-2 text-center font-semibold text-black shadow-sm hover:bg-[#b0914f]">
+              +15° ↷
+            </button>
+          </div>
+        </div>
+
+        {/* Dimensions — only when all items share the same name */}
+        {sharedDims && (
+          <div>
+            <label className="mb-1 block text-sm font-medium text-gray-700">
+              Dimensions
+              <span className="ml-1 text-[10px] font-normal text-gray-400">(applies to all)</span>
+            </label>
+            <div className="grid grid-cols-2 gap-2">
+              <div>
+                <span className="text-[10px] text-gray-500">Width</span>
+                <input
+                  type="number"
+                  defaultValue={sharedDims.width}
+                  key={`gw-${sharedDims.width}`}
+                  onBlur={(e) => onGroupSetDimension?.('width', parseFloat(e.target.value) || sharedDims.width)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') onGroupSetDimension?.('width', parseFloat((e.target as HTMLInputElement).value) || sharedDims.width);
+                  }}
+                  className="mt-0.5 w-full rounded-lg border border-gray-300 bg-white px-2 py-1.5 text-xs text-gray-900 focus:ring-2 focus:ring-[#CBA35C]/50 focus:outline-none"
+                />
+              </div>
+              <div>
+                <span className="text-[10px] text-gray-500">Height</span>
+                <input
+                  type="number"
+                  defaultValue={sharedDims.height}
+                  key={`gh-${sharedDims.height}`}
+                  onBlur={(e) => onGroupSetDimension?.('height', parseFloat(e.target.value) || sharedDims.height)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') onGroupSetDimension?.('height', parseFloat((e.target as HTMLInputElement).value) || sharedDims.height);
+                  }}
+                  className="mt-0.5 w-full rounded-lg border border-gray-300 bg-white px-2 py-1.5 text-xs text-gray-900 focus:ring-2 focus:ring-[#CBA35C]/50 focus:outline-none"
+                />
+              </div>
+            </div>
+            <p className="mt-1 text-[10px] text-gray-500">
+              {sharedDims.unit === 'in' ? 'Inches' : 'Feet'}
+            </p>
+          </div>
+        )}
+      </div>
+    );
+  };
+
   // DOOR (selected as its own item)
   const renderDoorProperties = (door: DoorWindow) => (
     <div className="space-y-4">
@@ -1123,76 +1303,77 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
     );
   };
 
+  const isGroupMode =
+    selectedItemType === 'furniture' &&
+    !!selectedFurnitureIds &&
+    selectedFurnitureIds.size > 1;
+
   // PANEL SHELL
   return (
     <div className="flex w-80 flex-col border-l border-gray-200 bg-white">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-gray-200 bg-gray-50 px-4 py-3">
         <div className="flex items-center gap-2">
-          {selectedItemType === 'wall' && (
-            <BrickWall className="text-dark-black h-6 w-6" />
+          {isGroupMode ? (
+            <>
+              <svg className="h-5 w-5 text-[#CBA35C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                  d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+              </svg>
+              <h3 className="text-lg font-semibold text-gray-900">Group</h3>
+              <span className="rounded-full bg-[#CBA35C]/15 px-2 py-0.5 text-[11px] font-semibold text-[#CBA35C]">
+                {selectedFurnitureIds!.size}
+              </span>
+            </>
+          ) : (
+            <>
+              {selectedItemType === 'wall' && <BrickWall className="text-dark-black h-6 w-6" />}
+              {selectedItemType === 'furniture' && <Armchair className="text-dark-black h-6 w-6" />}
+              {selectedItemType === 'door' && <DoorClosed className="text-dark-black h-6 w-6" />}
+              {selectedItemType === 'window' && <Grid2x2 className="text-dark-black h-6 w-6" />}
+              {selectedItemType === 'room' && <Grid2x2 className="text-dark-black h-6 w-6" />}
+              <h3 className="text-lg font-semibold text-gray-900">Properties</h3>
+            </>
           )}
-          {selectedItemType === 'furniture' && (
-            <Armchair className="text-dark-black h-6 w-6" />
-          )}
-          {selectedItemType === 'door' && (
-            <DoorClosed className="text-dark-black h-6 w-6" />
-          )}
-          {selectedItemType === 'window' && (
-            <Grid2x2 className="text-dark-black h-6 w-6" />
-          )}
-          {selectedItemType === 'room' && (
-            <Grid2x2 className="text-dark-black h-6 w-6" />
-          )}
-          <h3 className="text-lg font-semibold text-gray-900">Properties</h3>
         </div>
       </div>
 
       {/* Body */}
       <div className="flex-1 overflow-y-auto p-4">
-        {selectedItemType === 'wall' &&
-          renderWallProperties(selectedItem as Wall)}
-
-        {selectedItemType === 'furniture' &&
-          renderFurnitureProperties(selectedItem as FurnitureItem)}
-
-        {selectedItemType === 'door' &&
-          renderDoorProperties(selectedItem as DoorWindow)}
-
-        {selectedItemType === 'window' &&
-          renderWindowProperties(selectedItem as DoorWindow)}
-        {selectedItemType === 'room' &&
-          renderRoomProperties(selectedItem as Room)}
+        {isGroupMode
+          ? renderGroupPanel()
+          : (
+            <>
+              {selectedItemType === 'wall' && renderWallProperties(selectedItem as Wall)}
+              {selectedItemType === 'furniture' && renderFurnitureProperties(selectedItem as FurnitureItem)}
+              {selectedItemType === 'door' && renderDoorProperties(selectedItem as DoorWindow)}
+              {selectedItemType === 'window' && renderWindowProperties(selectedItem as DoorWindow)}
+              {selectedItemType === 'room' && renderRoomProperties(selectedItem as Room)}
+            </>
+          )
+        }
       </div>
 
       {/* Footer */}
       <div className="border-t border-gray-200 bg-gray-50 p-4">
         <button
-          onClick={onDelete}
+          onClick={isGroupMode ? onGroupDelete : onDelete}
           disabled={
-            (selectedItemType === 'wall' && isLocked) ||
-            (selectedItemType === 'furniture' &&
-              (selectedItem as FurnitureItem)?.locked)
+            !isGroupMode && (
+              (selectedItemType === 'wall' && isLocked) ||
+              (selectedItemType === 'furniture' && (selectedItem as FurnitureItem)?.locked)
+            )
           }
           className="flex w-full items-center justify-center gap-2 rounded-lg bg-red-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-red-600 disabled:cursor-not-allowed disabled:opacity-40"
         >
-          <svg
-            className="h-4 w-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-            />
+          <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
           </svg>
-          Delete {selectedItemType}
+          {isGroupMode ? `Delete ${selectedFurnitureIds!.size} items` : `Delete ${selectedItemType}`}
         </button>
 
-        {selectedItemType === 'wall' && isLocked && (
+        {!isGroupMode && selectedItemType === 'wall' && isLocked && (
           <p className="mt-2 text-center text-[10px] text-gray-500">
             Unlock the floor plan to delete walls.
           </p>
