@@ -6,6 +6,8 @@ import siteConfig from "@/config/siteConfig";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const montserrat = Montserrat({
   weight: ["400", "500", "600", "700"],
@@ -49,9 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.seo.title,
     description: siteConfig.seo.description,
-    images: [
-      "https://www.fidimezzanine.com/og-image.jpg",
-    ],
+    images: ["https://www.fidimezzanine.com/og-image.jpg"],
   },
   alternates: {
     canonical: "https://www.fidimezzanine.com",
@@ -99,54 +99,80 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": ["LocalBusiness", "EventVenue"],
               "@id": "https://www.fidimezzanine.com/#business",
-              "name": "FiDi Mezzanine",
-              "description": "FiDi Mezzanine is Manhattan's premier full-service event venue at 55 Broadway in New York's Financial District. Hosting corporate events, weddings, private parties and milestone celebrations for up to 400 guests.",
-              "url": "https://www.fidimezzanine.com",
-              "telephone": "+12129715353",
-              "email": "info@mmeink.com",
-              "priceRange": "$$$",
-              "address": {
+              name: "FiDi Mezzanine",
+              description:
+                "FiDi Mezzanine is Manhattan's premier full-service event venue at 55 Broadway in New York's Financial District. Hosting corporate events, weddings, private parties and milestone celebrations for up to 400 guests.",
+              url: "https://www.fidimezzanine.com",
+              telephone: "+12129715353",
+              email: "info@mmeink.com",
+              priceRange: "$$$",
+              address: {
                 "@type": "PostalAddress",
-                "streetAddress": "55 Broadway",
-                "addressLocality": "New York",
-                "addressRegion": "NY",
-                "postalCode": "10006",
-                "addressCountry": "US"
+                streetAddress: "55 Broadway",
+                addressLocality: "New York",
+                addressRegion: "NY",
+                postalCode: "10006",
+                addressCountry: "US",
               },
-              "geo": {
+              geo: {
                 "@type": "GeoCoordinates",
-                "latitude": 40.7074,
-                "longitude": -74.0126
+                latitude: 40.7074,
+                longitude: -74.0126,
               },
-              "image": "https://www.fidimezzanine.com/og-image.jpg",
-              "sameAs": [
+              image: "https://www.fidimezzanine.com/og-image.jpg",
+              sameAs: [
                 "https://www.instagram.com/fidimezzanine/",
-                "https://www.facebook.com/themezzaninenyc"
+                "https://www.facebook.com/themezzaninenyc",
               ],
-              "maximumAttendeeCapacity": 400,
-              "floorSize": {
+              maximumAttendeeCapacity: 400,
+              floorSize: {
                 "@type": "QuantitativeValue",
-                "value": 6300,
-                "unitCode": "FTK"
+                value: 6300,
+                unitCode: "FTK",
               },
-              "amenityFeature": [
-                { "@type": "LocationFeatureSpecification", "name": "Full Service Catering", "value": true },
-                { "@type": "LocationFeatureSpecification", "name": "Event Production and Staging", "value": true },
-                { "@type": "LocationFeatureSpecification", "name": "Decor Services", "value": true },
-                { "@type": "LocationFeatureSpecification", "name": "Private Bar", "value": true },
-                { "@type": "LocationFeatureSpecification", "name": "Meeting Rooms", "value": true },
-                { "@type": "LocationFeatureSpecification", "name": "Floor to Ceiling Windows", "value": true }
+              amenityFeature: [
+                {
+                  "@type": "LocationFeatureSpecification",
+                  name: "Full Service Catering",
+                  value: true,
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  name: "Event Production and Staging",
+                  value: true,
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  name: "Decor Services",
+                  value: true,
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  name: "Private Bar",
+                  value: true,
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  name: "Meeting Rooms",
+                  value: true,
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  name: "Floor to Ceiling Windows",
+                  value: true,
+                },
               ],
-              "hasMap": "https://maps.google.com/?q=55+Broadway+New+York+NY+10006",
-              "containsPlace": [
-                { "@type": "Room", "name": "Main Bar" },
-                { "@type": "Room", "name": "Lobby" },
-                { "@type": "Room", "name": "Reading Room" },
-                { "@type": "Room", "name": "Conference Room" },
-                { "@type": "Room", "name": "Dining Room" },
-                { "@type": "Room", "name": "Meeting Room" }
-              ]
-            })
+              hasMap:
+                "https://maps.google.com/?q=55+Broadway+New+York+NY+10006",
+              containsPlace: [
+                { "@type": "Room", name: "Main Bar" },
+                { "@type": "Room", name: "Lobby" },
+                { "@type": "Room", name: "Reading Room" },
+                { "@type": "Room", name: "Conference Room" },
+                { "@type": "Room", name: "Dining Room" },
+                { "@type": "Room", name: "Meeting Room" },
+              ],
+            }),
           }}
         />
       </head>
@@ -155,6 +181,8 @@ export default function RootLayout({
         <main className="pt-18 min-h-screen">{children}</main>
         <Footer />
         <ScrollToTop />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
