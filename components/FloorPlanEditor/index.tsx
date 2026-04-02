@@ -64,7 +64,7 @@ const findLibraryItem = (id: string): LibraryItemLike | undefined =>
 
 const FLOOR_UNDERLAY = {
   href: "/floor_plan.svg",
-  scale: 2.955,
+  scale: 2.45,
   opacity: 1,
   offset: { x: 40, y: 40 },
 } as const;
