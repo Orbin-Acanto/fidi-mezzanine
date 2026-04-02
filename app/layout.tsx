@@ -4,8 +4,6 @@ import Script from "next/script";
 import "./globals.css";
 import siteConfig from "@/config/siteConfig";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import ScrollToTop from "@/components/ScrollToTop";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -178,9 +176,7 @@ export default function RootLayout({
       </head>
       <body className={gildaDisplay.className}>
         <Header />
-        <main className="pt-18 min-h-screen">{children}</main>
-        <Footer />
-        <ScrollToTop />
+        {children}
         <Analytics />
         <SpeedInsights />
       </body>

@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(cp -r app/brochure app/\\\\\\(main\\\\\\)/)",
+      "Bash(cp -r app/floor-plans app/\\\\\\(main\\\\\\)/)",
+      "Bash(cp -r app/privacy-policy app/\\\\\\(main\\\\\\)/)",
+      "Bash(cp -r app/terms-of-service app/\\\\\\(main\\\\\\)/)",
+      "Bash(cp -r app/thank-you app/\\\\\\(main\\\\\\)/)"
     ]
   }
 }
