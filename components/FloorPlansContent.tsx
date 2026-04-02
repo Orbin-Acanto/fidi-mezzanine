@@ -17,13 +17,13 @@ export default function FloorPlansContent() {
   return (
     <>
       {/* Preheader */}
-      <section className="bg-[#f7f4ee] py-20 md:py-24 mt-20">
+      <section className="bg-[#f7f4ee] py-14 md:py-20 lg:py-24 mt-[5rem] md:mt-[6.5rem]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="font-heading text-4xl font-semibold uppercase tracking-tight text-[#111111] md:text-6xl">
+            <h2 className="font-heading text-3xl font-semibold uppercase tracking-tight text-[#111111] sm:text-4xl md:text-5xl lg:text-6xl">
               Explore FiDi Mezzanine
             </h2>
-            <p className="mt-3 text-base leading-7 text-[#5f5a52] md:text-lg">
+            <p className="mt-3 text-sm leading-7 text-[#5f5a52] sm:text-base md:text-lg max-w-2xl mx-auto">
               Get a full picture of the layout before you book. 6,300 square
               feet of event space in Manhattan&apos;s Financial District, built
               for corporate events, weddings, private parties and everything in
@@ -49,7 +49,7 @@ export default function FloorPlansContent() {
             </span>
 
             <div className="mt-4 max-w-3xl">
-              <h1 className="font-heading text-2xl font-semibold uppercase tracking-tight text-[#111111] md:text-4xl">
+              <h1 className="font-heading text-xl font-semibold uppercase tracking-tight text-[#111111] sm:text-2xl md:text-4xl">
                 FiDi Mezzanine Venue Floor Plan
               </h1>
               <p className="mt-3 max-w-2xl text-sm leading-7 text-[#5f5a52] md:text-base">
@@ -78,32 +78,54 @@ export default function FloorPlansContent() {
                 </div>
               </div>
 
-              <a
-                href="/plan/Mezzanine Floor Plan.pdf"
-                download
-                className="font-heading mt-4 inline-flex min-h-[54px] w-full items-center justify-center gap-3 border border-[#c6a55b] bg-[#c6a55b] px-6 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#b89345]"
-              >
-                <svg
-                  className="h-5 w-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+              <div className="mt-4 flex flex-col sm:flex-row gap-3">
+                <a
+                  href="/plan/Mezzanine Floor Plan.pdf"
+                  download
+                  className="font-heading inline-flex min-h-[54px] flex-1 items-center justify-center gap-3 border border-[#c6a55b] bg-[#c6a55b] px-6 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#b89345]"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 10v6m0 0l-3-3m3 3l3-3M4 17v2a1 1 0 001 1h14a1 1 0 001-1v-2"
-                  />
-                </svg>
-                Download Floor Plan PDF
-              </a>
+                  <svg
+                    className="h-5 w-5 shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 10v6m0 0l-3-3m3 3l3-3M4 17v2a1 1 0 001 1h14a1 1 0 001-1v-2"
+                    />
+                  </svg>
+                  Download Floor Plan PDF
+                </a>
+
+                <a
+                  href="/customize-plan"
+                  className="font-heading inline-flex min-h-[54px] flex-1 items-center justify-center gap-3 border border-[#c6a55b] px-6 text-sm font-semibold uppercase tracking-[0.14em] text-[#c6a55b] transition hover:bg-[#c6a55b] hover:text-white"
+                >
+                  <svg
+                    className="h-5 w-5 shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15.232 5.232l3.536 3.536M9 11l6.071-6.071a2 2 0 012.828 2.828L11.828 13.828a2 2 0 01-1.414.586H8v-2.414a2 2 0 01.586-1.414z"
+                    />
+                  </svg>
+                  Create Your Plan Now
+                </a>
+              </div>
             </div>
 
             {/* Highlights side */}
             <div className="lg:col-span-4">
-              <div className="flex h-full flex-col border border-[#d9d1c3] bg-[#f4f0e7] text-[#111111]">
-                <div className="border-b border-[#d9d1c3] px-6 py-6 md:px-8">
+              <div className="flex flex-col border border-[#d9d1c3] bg-[#f4f0e7] text-[#111111] lg:h-full">
+                <div className="border-b border-[#d9d1c3] px-5 py-5 sm:px-6 sm:py-6 md:px-8">
                   <p className="font-heading text-[11px] font-semibold uppercase tracking-[0.22em] text-[#c6a55b]">
                     Space Highlights
                   </p>
@@ -112,7 +134,7 @@ export default function FloorPlansContent() {
                   </h2>
                 </div>
 
-                <div className="flex-1 px-6 py-6 md:px-8">
+                <div className="flex-1 px-5 py-5 sm:px-6 sm:py-6 md:px-8">
                   <div className="space-y-0 border-t border-white/10">
                     {highlights.map((item) => (
                       <div
@@ -128,7 +150,7 @@ export default function FloorPlansContent() {
                   </div>
                 </div>
 
-                <div className="border-t border-[#d9d1c3] px-6 py-5 md:px-8">
+                <div className="border-t border-[#d9d1c3] px-5 py-4 sm:px-6 sm:py-5 md:px-8">
                   <p className="font-heading text-xs uppercase tracking-[0.18em] text-[#5f5a52]">
                     FiDi Mezzanine, 55 Broadway, Manhattan NY
                   </p>
@@ -142,10 +164,10 @@ export default function FloorPlansContent() {
       {/* CTA Section */}
       <section className="bg-[#f7f4ee] py-16 md:py-20">
         <div className="mx-auto max-w-3xl px-4 text-center">
-          <h2 className="font-heading text-2xl font-semibold uppercase tracking-tight text-[#111111] md:text-3xl">
+          <h2 className="font-heading text-xl font-semibold uppercase tracking-tight text-[#111111] sm:text-2xl md:text-3xl">
             Ready to Book Your Manhattan Event?
           </h2>
-          <p className="mt-4 text-[#5f5a52] md:text-lg">
+          <p className="mt-4 text-sm text-[#5f5a52] sm:text-base md:text-lg">
             FiDi Mezzanine offers full-service corporate events, weddings, and
             private parties for up to 400 guests at 55 Broadway. Reach out to
             our team to check availability and start planning.

@@ -7,18 +7,8 @@ import { usePathname, useRouter } from "next/navigation";
 import siteConfig from "@/config/siteConfig";
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -50,11 +40,10 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 bg-white py-4 ${
-        isScrolled ? "border-[#e7dfd2] shadow-sm" : "border-transparent"
-      }`}
+      className="fixed inset-x-0 top-0 z-50 border-b-2 border-b-[#c8a96b] transition-shadow duration-300 py-5"
+      style={{ backgroundColor: "rgba(245, 245, 245, 0.95)" }}
     >
-      <div className="mx-auto flex items-center justify-between px-4 sm:px-16 2xl:px-48">
+      <div className="mx-auto flex h-16 items-center justify-between px-4 sm:px-16 2xl:px-48">
         <Link href="/" className="relative z-50 flex shrink-0 items-center">
           <Image
             src="/logo/FIDI Mezzanine.png"
@@ -66,7 +55,7 @@ export default function Header() {
           />
         </Link>
 
-        <nav className="hidden xl:flex items-center gap-8 font-heading uppercase">
+        <nav className="hidden min-[1580px]:flex items-center gap-8 font-heading uppercase">
           {siteConfig.navigation.map((item) => {
             const isPageLink = item.href.startsWith("/");
 
@@ -98,7 +87,7 @@ export default function Header() {
           })}
         </nav>
 
-        <div className="hidden xl:block">
+        <div className="hidden min-[1580px]:block">
           <button
             onClick={() => scrollToSection("#contact")}
             className="font-heading inline-flex min-h-[46px] items-center justify-center border border-[#c8a96b] bg-[#c8a96b] px-5 text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[#b89345]"
@@ -108,7 +97,7 @@ export default function Header() {
         </div>
 
         <button
-          className="relative z-50 flex h-10 w-10 items-center justify-center xl:hidden"
+          className="relative z-50 flex h-10 w-10 items-center justify-center min-[1580px]:hidden"
           onClick={() => setIsMobileMenuOpen((prev) => !prev)}
           aria-label="Toggle menu"
           aria-expanded={isMobileMenuOpen}
@@ -131,7 +120,7 @@ export default function Header() {
         </button>
 
         <div
-          className={`fixed inset-y-0 right-0 w-[85%] sm:w-[380px] z-40 bg-white transition-transform duration-300 xl:hidden ${
+          className={`fixed inset-y-0 right-0 w-[85%] sm:w-[380px] z-40 bg-white transition-transform duration-300 min-[1580px]:hidden ${
             isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >

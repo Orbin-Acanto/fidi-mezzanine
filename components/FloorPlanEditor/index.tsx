@@ -610,6 +610,13 @@ export const FloorPlanEditor: React.FC = () => {
   });
 
   useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+
+  useEffect(() => {
     const checkMobile = () => {
       if (typeof window !== "undefined") {
         setIsMobile(window.innerWidth < 768);
@@ -626,7 +633,7 @@ export const FloorPlanEditor: React.FC = () => {
   }
 
   return (
-    <div className="flex h-screen min-w-7xl flex-col bg-gray-50 overflow-hidden pt-[72px]">
+    <div className="flex h-screen min-w-7xl flex-col bg-gray-50 overflow-hidden mt-[6.5rem]">
       <TopToolbar
         selectedTool={selectedTool}
         onToolChange={setSelectedTool}
