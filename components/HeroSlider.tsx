@@ -13,6 +13,8 @@ export default function HeroSlider() {
           muted
           loop
           playsInline
+          preload="none"
+          poster="/hero-poster.jpg"
           className="absolute inset-0 w-full h-full object-cover"
         />
       </div>

@@ -25,19 +25,18 @@ export default function FeatureSection() {
           <AnimatedSection className="p-8 md:p-16 lg:p-20">
             <h2 className="text-4xl md:text-5xl font-heading mb-6 uppercase tracking-wide">
               <span className="relative inline-block">
-                <span className="relative z-10">FiDi&apos;s Newest:</span>
-                {/* <span className="absolute bottom-2 left-0 w-full h-3 bg-primary/20 -z-0" /> */}
+                <span className="relative z-10">Manhattan&apos;s Most Exciting</span>
               </span>
-              {/* A Fresh Standard for Downtown Events */}
-              <br />A Fresh Standard for Downtown Events
+              <br />New Event Venue
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed">
-              Located at 55 Broadway in the heart of the Financial District, The
-              Mezzanine is FiDi&apos;s most stylish event venue. Spanning over
-              6,300 square feet across four rooms, it sets a new standard for
-              downtown events with industrial-chic design, full in-house
-              production capabilities, and dedicated event management from
-              MMEink.
+              Located at 55 Broadway in the heart of Manhattan&apos;s Financial
+              District, FiDi Mezzanine sets a new standard for event spaces in
+              New York City. Spanning over 6,300 square feet across four
+              beautifully designed rooms, this is the party venue, corporate
+              event space, and wedding venue that Lower Manhattan has been
+              waiting for. Full in-house production, catering, decor, and
+              staging handled from start to finish by the MMEink team.
             </p>
           </AnimatedSection>
         </div>
@@ -47,7 +46,7 @@ export default function FeatureSection() {
           <motion.div style={{ y }} className="absolute inset-0 scale-110">
             <Image
               src="/gallery/26.jpg"
-              alt="The Mezzanine Interior"
+              alt="FiDi Mezzanine interior event venue Manhattan Financial District"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"

@@ -37,18 +37,19 @@ export default function VideoSection() {
           <AnimatedSection className="lg:pl-8">
             <h2 className="text-4xl md:text-5xl font-heading mb-6 uppercase tracking-wide">
               <span className="relative inline-block">
-                <span className="relative z-10">Step Inside</span>
-                {/* <span className="absolute bottom-2 left-0 w-full h-3 bg-primary/20 -z-0" /> */}
+                <span className="relative z-10">See the Space</span>
               </span>
               <br />
-              The Mezzanine
+              That Changes Everything
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed">
-              The moment you arrive, the space makes an impression.
-              Floor-to-ceiling windows, sleek bleacher-style seating, designer
-              lounge furniture, and chandeliers come together to create a
-              backdrop that is polished, versatile, and genuinely unlike
-              anything else in the Financial District.
+              The moment you walk in, you understand why FiDi Mezzanine is the
+              event venue Manhattan has been talking about. Floor to ceiling
+              windows pour light into a space filled with designer lounge
+              furniture, striking chandeliers, and sleek bleacher style seating.
+              It is polished and warm, flexible and impressive, and unlike
+              anything else available for rent in New York City. This is where
+              corporate events become legendary, and weddings become timeless.
             </p>
           </AnimatedSection>
         </div>

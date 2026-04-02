@@ -1,14 +1,16 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 const highlights = [
-  "6,300 sq ft venue",
-  "4 flexible rooms",
-  "Up to 400 guests standing",
+  "6,300 sq ft across 6 distinct rooms",
+  "Up to 400 guests standing, 150 seated",
+  "Full service catering, decor and staging",
   "Designer interiors and lounge furniture",
-  "Floor to ceiling windows",
-  "Built for private and corporate events",
+  "Floor to ceiling windows with natural light",
+  "Corporate events, weddings and private parties",
+  "55 Broadway, Financial District Manhattan",
 ];
 
 export default function FloorPlansContent() {
@@ -19,11 +21,13 @@ export default function FloorPlansContent() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="font-heading text-4xl font-semibold uppercase tracking-tight text-[#111111] md:text-6xl">
-              Discover the Mezzanine Experience
+              Explore FiDi Mezzanine
             </h2>
             <p className="mt-3 text-base leading-7 text-[#5f5a52] md:text-lg">
-              This section helps you get a quick preview of the layout, key
-              specs, and download options before booking.
+              Get a full picture of the layout before you book. 6,300 square
+              feet of event space in Manhattan&apos;s Financial District, built
+              for corporate events, weddings, private parties and everything in
+              between.
             </p>
           </div>
         </div>
@@ -36,7 +40,7 @@ export default function FloorPlansContent() {
       </section>
 
       {/* Main content */}
-      <section className="bg-white py-16 pb-8 md:py-20">
+      <section className="bg-white py-16 pb-0 md:py-20 md:pb-0">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="mb-8 md:mb-10">
@@ -46,11 +50,13 @@ export default function FloorPlansContent() {
 
             <div className="mt-4 max-w-3xl">
               <h1 className="font-heading text-2xl font-semibold uppercase tracking-tight text-[#111111] md:text-4xl">
-                Explore The Mezzanine Layout
+                FiDi Mezzanine Venue Floor Plan
               </h1>
               <p className="mt-3 max-w-2xl text-sm leading-7 text-[#5f5a52] md:text-base">
-                View the full venue layout, download the plan, and get a quick
-                look at the space.
+                View the complete layout of our Manhattan event venue. Download
+                the floor plan and see how our six rooms can be configured for
+                your corporate event, wedding reception, or private party at 55
+                Broadway.
               </p>
             </div>
           </div>
@@ -102,7 +108,7 @@ export default function FloorPlansContent() {
                     Space Highlights
                   </p>
                   <h2 className="font-heading mt-3 text-xl font-semibold uppercase leading-tight md:text-2xl">
-                    Clean, Flexible, Event Ready
+                    Flexible, Full Service, Event Ready
                   </h2>
                 </div>
 
@@ -124,11 +130,33 @@ export default function FloorPlansContent() {
 
                 <div className="border-t border-[#d9d1c3] px-6 py-5 md:px-8">
                   <p className="font-heading text-xs uppercase tracking-[0.18em] text-[#5f5a52]">
-                    Lower Manhattan event venue
+                    FiDi Mezzanine, 55 Broadway, Manhattan NY
                   </p>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="bg-[#f7f4ee] py-16 md:py-20">
+        <div className="mx-auto max-w-3xl px-4 text-center">
+          <h2 className="font-heading text-2xl font-semibold uppercase tracking-tight text-[#111111] md:text-3xl">
+            Ready to Book Your Manhattan Event?
+          </h2>
+          <p className="mt-4 text-[#5f5a52] md:text-lg">
+            FiDi Mezzanine offers full-service corporate events, weddings, and
+            private parties for up to 400 guests at 55 Broadway. Reach out to
+            our team to check availability and start planning.
+          </p>
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/#contact" className="btn-primary">
+              Contact Us
+            </Link>
+            <Link href="/brochure" className="btn-primary">
+              View Venue Brochure
+            </Link>
           </div>
         </div>
       </section>

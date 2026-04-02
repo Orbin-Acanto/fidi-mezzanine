@@ -25,7 +25,7 @@ export default function Footer() {
           {/* Column 1 — Nav Links (first half) */}
           <div>
             <h3 className="text-primary font-heading text-lg tracking-wider mb-6">
-              FIDI MEZZANINE
+              FIDI MEZZANINE NYC
             </h3>
             <ul className="space-y-3 text-sm">
               {navigation
@@ -85,11 +85,12 @@ export default function Footer() {
           {/* Column 3 — Get in Touch */}
           <div>
             <h3 className="text-primary font-heading text-lg tracking-wider mb-6">
-              GET IN TOUCH TODAY.
+              PLAN YOUR EVENT
             </h3>
             <p className="text-sm mb-4">
-              Discover what options are available to you when planning your next
-              event.
+              Corporate events, weddings, private parties and milestone
+              celebrations. Manhattan&apos;s most complete event venue at 55
+              Broadway is ready for you.
             </p>
             <button
               onClick={() => scrollTo("#contact")}
@@ -177,7 +178,7 @@ export default function Footer() {
             </Link>
             <span className="hidden md:inline mx-4">|</span>
             <span>
-              Copyright &copy; {currentYear} FiDi Mezzanine. All rights
+              Copyright &copy; {currentYear} FiDi Mezzanine. Event Venue at 55 Broadway, Manhattan NY. All rights
               reserved.
             </span>
           </div>

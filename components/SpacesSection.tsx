@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import AnimatedSection from "./AnimatedSection";
@@ -37,11 +38,16 @@ export default function SpacesSection() {
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h2 className="section-title font-heading uppercase tracking-wide">
             <span className="relative inline-block">
-              <span className="relative z-10">Versatile</span>
-              {/* <span className="absolute bottom-2 left-0 w-full h-3 bg-primary/20 -z-0" /> */}
+              <span className="relative z-10">Our Event</span>
             </span>{" "}
             Spaces
           </h2>
+          <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
+            Six distinct rooms across 6,300 square feet. Each space at FiDi
+            Mezzanine is designed to work independently or together, giving you
+            the flexibility to create the perfect layout for your corporate
+            event, wedding, party, or private gathering in Manhattan.
+          </p>
         </div>
 
         {/* Spaces Grid */}
@@ -60,7 +66,7 @@ export default function SpacesSection() {
             >
               <Image
                 src={space.image}
-                alt={space.name}
+                alt={`${space.name} event space at FiDi Mezzanine, 55 Broadway Manhattan NYC`}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover transition-all duration-500 group-hover:scale-105"
@@ -74,6 +80,22 @@ export default function SpacesSection() {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Internal CTA */}
+        <div className="text-center mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+          <Link
+            href="/floor-plans"
+            className="btn-primary"
+          >
+            View Full Floor Plans
+          </Link>
+          <Link
+            href="/brochure"
+            className="btn-primary"
+          >
+            Download Venue Brochure
+          </Link>
+        </div>
       </div>
     </AnimatedSection>
   );

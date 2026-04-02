@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | FiDi Mezzanine",
-  description: "Terms of Service for FiDi Mezzanine event venue.",
+  title: "Terms of Service",
+  description: "Terms of Service for FiDi Mezzanine event venue at 55 Broadway, Manhattan NYC.",
+  alternates: {
+    canonical: "https://www.fidimezzanine.com/terms-of-service",
+  },
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
 
 export default function TermsOfServicePage() {

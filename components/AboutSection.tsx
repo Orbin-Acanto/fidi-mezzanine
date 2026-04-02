@@ -57,9 +57,8 @@ export default function AboutSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-gray-600 mb-6"
           >
-            Historic charm. Modern service. An intimate, flexible mezzanine
-            venue for corporate meetings, <br />
-            launches and private celebrations.
+            A one of a kind event venue in Manhattan, steps from Wall Street on
+            one of New York City&apos;s most iconic blocks.
           </motion.p>
 
           <motion.p
@@ -78,11 +77,12 @@ export default function AboutSection() {
             className="text-base text-gray-600"
           >
             With over {siteConfig.venue.squareFeet.toLocaleString()} square feet
-            across {siteConfig.venue.spaces} versatile spaces, The Mezzanine
-            accommodates a wide range of premier events, from high-impact
-            corporate conferences and product launches to private celebrations,
-            milestone dinners, and cocktail receptions for up to{" "}
-            {siteConfig.venue.capacity.max} guests.
+            across {siteConfig.venue.spaces} versatile rooms, FiDi Mezzanine
+            accommodates the full range of premier events in New York City.
+            Corporate conferences, product launches, wedding receptions, private
+            parties, milestone dinners, and cocktail receptions for up to{" "}
+            {siteConfig.venue.capacity.max} guests. Every event comes with full
+            in-house service covering catering, decor, staging and production.
           </motion.p>
         </div>
 
@@ -103,7 +103,7 @@ export default function AboutSection() {
               <div className="relative h-64 overflow-hidden">
                 <Image
                   src={eventType.image}
-                  alt={eventType.title}
+                  alt={`${eventType.title.charAt(0) + eventType.title.slice(1).toLowerCase()} at FiDi Mezzanine Manhattan event venue`}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-110"

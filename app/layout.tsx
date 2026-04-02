@@ -22,7 +22,10 @@ const gildaDisplay = Gilda_Display({
 });
 
 export const metadata: Metadata = {
-  title: siteConfig.seo.title,
+  title: {
+    template: "%s | FiDi Mezzanine NYC",
+    default: siteConfig.seo.title,
+  },
   description: siteConfig.seo.description,
   keywords: siteConfig.seo.keywords,
   authors: [{ name: "MMEink" }],
@@ -35,10 +38,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://placehold.co/1200x630/1a1a1a/d2b371?text=The+Mezzanine+NYC",
+        url: "https://www.fidimezzanine.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: siteConfig.venue.name,
+        alt: "FiDi Mezzanine, Manhattan event venue at 55 Broadway New York",
       },
     ],
   },
@@ -47,7 +50,7 @@ export const metadata: Metadata = {
     title: siteConfig.seo.title,
     description: siteConfig.seo.description,
     images: [
-      "https://placehold.co/1200x630/1a1a1a/d2b371?text=The+Mezzanine+NYC",
+      "https://www.fidimezzanine.com/og-image.jpg",
     ],
   },
   alternates: {
@@ -89,6 +92,63 @@ export default function RootLayout({
             gtag('config', 'G-PNJMGZL35D');
           `}
         </Script>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": ["LocalBusiness", "EventVenue"],
+              "@id": "https://www.fidimezzanine.com/#business",
+              "name": "FiDi Mezzanine",
+              "description": "FiDi Mezzanine is Manhattan's premier full-service event venue at 55 Broadway in New York's Financial District. Hosting corporate events, weddings, private parties and milestone celebrations for up to 400 guests.",
+              "url": "https://www.fidimezzanine.com",
+              "telephone": "+12129715353",
+              "email": "info@mmeink.com",
+              "priceRange": "$$$",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "55 Broadway",
+                "addressLocality": "New York",
+                "addressRegion": "NY",
+                "postalCode": "10006",
+                "addressCountry": "US"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 40.7074,
+                "longitude": -74.0126
+              },
+              "image": "https://www.fidimezzanine.com/og-image.jpg",
+              "sameAs": [
+                "https://www.instagram.com/fidimezzanine/",
+                "https://www.facebook.com/themezzaninenyc"
+              ],
+              "maximumAttendeeCapacity": 400,
+              "floorSize": {
+                "@type": "QuantitativeValue",
+                "value": 6300,
+                "unitCode": "FTK"
+              },
+              "amenityFeature": [
+                { "@type": "LocationFeatureSpecification", "name": "Full Service Catering", "value": true },
+                { "@type": "LocationFeatureSpecification", "name": "Event Production and Staging", "value": true },
+                { "@type": "LocationFeatureSpecification", "name": "Decor Services", "value": true },
+                { "@type": "LocationFeatureSpecification", "name": "Private Bar", "value": true },
+                { "@type": "LocationFeatureSpecification", "name": "Meeting Rooms", "value": true },
+                { "@type": "LocationFeatureSpecification", "name": "Floor to Ceiling Windows", "value": true }
+              ],
+              "hasMap": "https://maps.google.com/?q=55+Broadway+New+York+NY+10006",
+              "containsPlace": [
+                { "@type": "Room", "name": "Main Bar" },
+                { "@type": "Room", "name": "Lobby" },
+                { "@type": "Room", "name": "Reading Room" },
+                { "@type": "Room", "name": "Conference Room" },
+                { "@type": "Room", "name": "Dining Room" },
+                { "@type": "Room", "name": "Meeting Room" }
+              ]
+            })
+          }}
+        />
       </head>
       <body className={gildaDisplay.className}>
         <Header />

@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | FiDi Mezzanine",
-  description: "Privacy Policy for FiDi Mezzanine event venue.",
+  title: "Privacy Policy",
+  description: "Privacy Policy for FiDi Mezzanine event venue at 55 Broadway, Manhattan NYC.",
+  alternates: {
+    canonical: "https://www.fidimezzanine.com/privacy-policy",
+  },
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
 
 export default function PrivacyPolicyPage() {

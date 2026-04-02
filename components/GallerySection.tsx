@@ -60,11 +60,16 @@ export default function GallerySection() {
       <div className="max-w-4xl mx-auto text-center mb-12 px-4">
         <h2 className="section-title font-heading uppercase tracking-wide">
           <span className="relative inline-block">
-            <span className="relative z-10">Photo</span>
-            {/* <span className="absolute bottom-2 left-0 w-full h-3 bg-primary/20 -z-0" /> */}
+            <span className="relative z-10">Venue</span>
           </span>{" "}
           Gallery
         </h2>
+        <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
+          Take a look inside Manhattan&apos;s most versatile event space. From
+          intimate corporate meetings to grand wedding receptions and private
+          parties for up to 400 guests, FiDi Mezzanine brings every vision to
+          life at 55 Broadway.
+        </p>
       </div>
 
       <motion.div

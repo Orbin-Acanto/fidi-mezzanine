@@ -16,11 +16,15 @@ export default function ContactSection() {
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h2 className="section-title font-heading uppercase tracking-wide">
             <span className="relative inline-block">
-              <span className="relative z-10">Contact</span>
-              {/* <span className="absolute bottom-2 left-0 w-full h-3 bg-primary/20 -z-0" /> */}
+              <span className="relative z-10">Book Your</span>
             </span>{" "}
-            Us
+            Event
           </h2>
+          <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
+            Ready to plan your corporate event, wedding, or private party in
+            Manhattan? Reach out to the FiDi Mezzanine team and let us show you
+            what full service event production at 55 Broadway looks like.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
