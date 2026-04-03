@@ -64,7 +64,7 @@ const findLibraryItem = (id: string): LibraryItemLike | undefined =>
 
 const FLOOR_UNDERLAY = {
   href: "/floor_plan.svg",
-  scale: 2.45,
+  scale: 2.85,
   opacity: 1,
   offset: { x: 40, y: 40 },
 } as const;
@@ -799,11 +799,19 @@ export const FloorPlanEditor: React.FC = () => {
             onClose={() => setShowPropertiesPanel(false)}
             pixelsPerFoot={floorPlan.canvasSettings.scale}
             selectedFurnitureIds={selectedFurnitureIds}
-            onGroupRotate={(angleDeg) => rotateGroup(selectedFurnitureIds, angleDeg)}
-            onGroupSetRotation={(targetDeg, currentDeg) => setGroupRotation(selectedFurnitureIds, targetDeg, currentDeg)}
+            onGroupRotate={(angleDeg) =>
+              rotateGroup(selectedFurnitureIds, angleDeg)
+            }
+            onGroupSetRotation={(targetDeg, currentDeg) =>
+              setGroupRotation(selectedFurnitureIds, targetDeg, currentDeg)
+            }
             onGroupNudge={(dx, dy) => nudgeGroup(selectedFurnitureIds, dx, dy)}
-            onGroupMoveCentroid={(x, y) => moveGroupCentroid(selectedFurnitureIds, x, y)}
-            onGroupSetDimension={(key, value) => setGroupDimension(selectedFurnitureIds, key, value)}
+            onGroupMoveCentroid={(x, y) =>
+              moveGroupCentroid(selectedFurnitureIds, x, y)
+            }
+            onGroupSetDimension={(key, value) =>
+              setGroupDimension(selectedFurnitureIds, key, value)
+            }
             onGroupDelete={() => {
               deleteGroup(selectedFurnitureIds);
               setSelectedFurnitureIds(new Set());
