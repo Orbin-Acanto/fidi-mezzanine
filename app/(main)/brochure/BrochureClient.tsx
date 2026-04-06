@@ -16,7 +16,7 @@ const BrochureFlipbook = dynamic(
 
 export default function BrochureClient() {
   return (
-    <div className="pt-24 mt-2">
+    <div>
       <BrochureFlipbook />
     </div>
   );

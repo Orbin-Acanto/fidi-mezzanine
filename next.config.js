@@ -2,6 +2,20 @@
 const nextConfig = {
   compress: true,
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: "/index.html",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/index.htm",
+        destination: "/",
+        permanent: true,
+      },
+    ];
+  },
   webpack: (config) => {
     config.resolve.alias.canvas = false;
     return config;
