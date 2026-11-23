@@ -2,8 +2,14 @@
 
 import React, { useEffect } from "react";
 import { InlineWidget } from "react-calendly";
+import { track } from "@vercel/analytics";
 
 export default function ThankYouClient() {
+  // Zoho only redirects here after the contact form is accepted.
+  useEffect(() => {
+    track("lead_submitted", { form: "contact" });
+  }, []);
+
   useEffect(() => {
     const link = document.createElement("link");
     link.href = "https://assets.calendly.com/assets/external/widget.css";

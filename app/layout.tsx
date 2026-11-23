@@ -6,6 +6,7 @@ import siteConfig from "@/config/siteConfig";
 import Header from "@/components/Header";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import ClickTracking from "@/components/ClickTracking";
 
 const montserrat = Montserrat({
   weight: ["400", "500", "600", "700"],
@@ -177,6 +178,7 @@ export default function RootLayout({
         {children}
         <Analytics />
         <SpeedInsights />
+        <ClickTracking />
       </body>
     </html>
   );
