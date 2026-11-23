@@ -171,7 +171,7 @@ export default function ContactSection() {
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="The Mezzanine Location"
+                  title="Map of FiDi Mezzanine at 55 Broadway, New York"
                   className="absolute inset-0"
                 />
               </div>

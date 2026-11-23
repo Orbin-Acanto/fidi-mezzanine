@@ -54,42 +54,24 @@ export default function CustomizePlanLayout({
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'WebApplication',
-            name: 'FiDi Mezzanine Event Plan Customization Tool',
+            name: 'FiDi Mezzanine Event Floor Plan Designer',
             description:
-              'Interactive floor plan designer for customizing event layouts at FiDi Mezzanine, 55 Broadway Manhattan, with PDF export capability.',
+              'Interactive floor plan designer for planning event layouts at FiDi Mezzanine, 55 Broadway, Manhattan, with PDF export.',
             url: 'https://www.fidimezzanine.com/customize-plan',
-            applicationCategory: 'Event Planning Tool',
+            applicationCategory: 'DesignApplication',
             operatingSystem: 'Web Browser',
             offers: {
               '@type': 'Offer',
               price: '0',
               priceCurrency: 'USD',
-              availability: 'https://schema.org/InStock',
             },
             featureList: [
-              'Interactive floor plan customization',
-              'Seating arrangement designer',
-              'Layout visualization across six rooms',
-              'PDF export of custom plans',
-              'Main Bar layout options',
-              'Dining Room configuration',
-              'Conference Room setup',
-              'Full venue layout planning',
+              'Drag and drop tables, seating, bars and staging',
+              'Add decor, catering stations and AV equipment',
+              'Add event details to the plan',
+              'Export as PDF, PNG, SVG or JSON',
             ],
-            provider: {
-              '@type': 'EventVenue',
-              name: 'FiDi Mezzanine',
-              address: {
-                '@type': 'PostalAddress',
-                streetAddress: '55 Broadway',
-                addressLocality: 'New York',
-                addressRegion: 'NY',
-                postalCode: '10006',
-                addressCountry: 'US',
-              },
-              telephone: '+12129715353',
-              email: 'info@mmeink.com',
-            },
+            provider: { '@id': 'https://www.fidimezzanine.com/#business' },
           }),
         }}
       />
@@ -111,109 +93,6 @@ export default function CustomizePlanLayout({
                 position: 2,
                 name: 'Customize Plan',
                 item: 'https://www.fidimezzanine.com/customize-plan',
-              },
-            ],
-          }),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebPage',
-            name: 'Customize Your Event Plan',
-            description:
-              'Interactive event planning tool for customizing floor plans and exporting layouts for FiDi Mezzanine events at 55 Broadway, Manhattan.',
-            url: 'https://www.fidimezzanine.com/customize-plan',
-            isPartOf: {
-              '@type': 'WebSite',
-              name: 'FiDi Mezzanine NYC',
-              url: 'https://www.fidimezzanine.com',
-            },
-            about: {
-              '@type': 'EventVenue',
-              name: 'FiDi Mezzanine',
-            },
-            potentialAction: {
-              '@type': 'CreateAction',
-              name: 'Customize Event Floor Plan',
-              description:
-                'Create and customize event floor plan with seating arrangements and layout options for FiDi Mezzanine',
-              result: {
-                '@type': 'DigitalDocument',
-                name: 'Custom Event Floor Plan PDF',
-                encodingFormat: 'application/pdf',
-              },
-            },
-          }),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'SoftwareApplication',
-            name: 'FiDi Mezzanine Floor Plan Customization Tool',
-            applicationCategory: 'DesignApplication',
-            description:
-              'Interactive tool for designing custom event layouts at FiDi Mezzanine with real-time visualization and PDF export. Plan corporate events, weddings, and private parties at 55 Broadway, Manhattan.',
-            operatingSystem: 'Web',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'USD',
-            },
-            featureList: [
-              'Drag-and-drop floor plan designer',
-              'Customize seating arrangements',
-              'Visualize event layout in real-time',
-              'Export customized plans as PDF',
-              'Multiple venue space options across six rooms',
-              'Capacity calculations up to 400 guests',
-            ],
-            provider: {
-              '@type': 'Organization',
-              name: 'FiDi Mezzanine',
-              url: 'https://www.fidimezzanine.com',
-            },
-          }),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'HowTo',
-            name: 'How to Customize Your Event Floor Plan at FiDi Mezzanine',
-            description:
-              'Step-by-step guide to using the FiDi Mezzanine floor plan customization tool at 55 Broadway, Manhattan.',
-            step: [
-              {
-                '@type': 'HowToStep',
-                position: 1,
-                name: 'Select a Room',
-                text: 'Choose from six available rooms including the Main Bar, Dining Room, Conference Room, Reading Room, Lobby, or Meeting Room.',
-              },
-              {
-                '@type': 'HowToStep',
-                position: 2,
-                name: 'Customize Layout',
-                text: 'Arrange seating, tables, and event elements using the interactive designer to fit your corporate event, wedding, or private party.',
-              },
-              {
-                '@type': 'HowToStep',
-                position: 3,
-                name: 'Visualize Setup',
-                text: 'Preview your custom event layout in real-time and adjust for up to 400 guests.',
-              },
-              {
-                '@type': 'HowToStep',
-                position: 4,
-                name: 'Export PDF',
-                text: 'Download your customized FiDi Mezzanine floor plan as a PDF to share with your event team.',
               },
             ],
           }),

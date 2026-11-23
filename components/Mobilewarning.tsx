@@ -17,9 +17,9 @@ export const MobileWarning: React.FC = () => {
         />
       </svg>
 
-      <h1 className="mb-4 text-3xl font-bold text-gray-900">
+      <h2 className="mb-4 text-3xl font-bold text-gray-900">
         Desktop Required
-      </h1>
+      </h2>
 
       <p className="mb-2 max-w-md text-lg text-gray-600">
         The Floor Plan Editor requires a larger screen for the best experience.

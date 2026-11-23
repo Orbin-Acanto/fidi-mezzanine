@@ -15,7 +15,7 @@ const Page = React.forwardRef<
     <div ref={ref} className="bg-white">
       <img
         src={src}
-        alt={`Brochure page ${pageNumber}`}
+        alt={`FiDi Mezzanine venue brochure, page ${pageNumber}`}
         className="w-full h-full object-cover"
         draggable={false}
       />

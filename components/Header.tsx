@@ -47,7 +47,7 @@ export default function Header() {
         <Link href="/" className="relative z-50 flex shrink-0 items-center">
           <Image
             src="/logo/FIDI Mezzanine.png"
-            alt="The Mezzanine"
+            alt="FiDi Mezzanine"
             width={180}
             height={50}
             className="h-9 w-auto sm:h-10"

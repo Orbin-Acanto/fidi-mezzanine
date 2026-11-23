@@ -1,5 +1,23 @@
 import { MetadataRoute } from "next";
 
+// Named bots skip the * group, so they repeat the same disallows
+const aiAndSearchBots = [
+  "GPTBot",
+  "OAI-SearchBot",
+  "ChatGPT-User",
+  "PerplexityBot",
+  "Perplexity-User",
+  "anthropic-ai",
+  "ClaudeBot",
+  "Claude-User",
+  "Claude-SearchBot",
+  "Google-Extended",
+  "Applebot",
+  "Applebot-Extended",
+  "Bingbot",
+  "CCBot",
+];
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
@@ -9,35 +27,9 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/thank-you", "/api/"],
       },
       {
-        userAgent: "GPTBot",
+        userAgent: aiAndSearchBots,
         allow: "/",
-        disallow: ["/thank-you"],
-      },
-      {
-        userAgent: "OAI-SearchBot",
-        allow: "/",
-        disallow: ["/thank-you"],
-      },
-      {
-        userAgent: "PerplexityBot",
-        allow: "/",
-        disallow: ["/thank-you"],
-      },
-      {
-        userAgent: "Google-Extended",
-        allow: "/",
-      },
-      {
-        userAgent: "anthropic-ai",
-        allow: "/",
-      },
-      {
-        userAgent: "ClaudeBot",
-        allow: "/",
-      },
-      {
-        userAgent: "Applebot",
-        allow: "/",
+        disallow: ["/thank-you", "/api/"],
       },
     ],
     sitemap: "https://www.fidimezzanine.com/sitemap.xml",

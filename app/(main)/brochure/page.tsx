@@ -72,7 +72,7 @@ const brochureHighlights = [
 
 export default function BrochurePage() {
   return (
-    <main className="bg-[#f7f4ee]">
+    <div className="bg-[#f7f4ee]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -95,10 +95,8 @@ export default function BrochurePage() {
                 celebrations.
               </p>
               <p className="mt-4 max-w-2xl text-base leading-8 text-[#5f5a52]">
-                This page gives Google and visitors a clear overview of what
-                the brochure includes, while the interactive viewer below lets
-                you flip through the full brochure online or open the PDF
-                directly.
+                The brochure covers the spaces, floor plans and event setups.
+                Flip through it below or open the PDF.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -159,6 +157,6 @@ export default function BrochurePage() {
       </section>
 
       <BrochureClient />
-    </main>
+    </div>
   );
 }

@@ -278,6 +278,7 @@ const siteConfig: SiteConfig = {
     { label: "Video", href: "#video" },
     { label: "Gallery", href: "#gallery" },
     { label: "Brochure", href: "/brochure" },
+    { label: "FAQ", href: "/faq" },
     { label: "Contact Us", href: "#contact" },
   ],
 };

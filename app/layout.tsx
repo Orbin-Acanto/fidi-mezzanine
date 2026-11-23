@@ -116,6 +116,7 @@ export default function RootLayout({
                 latitude: 40.7074,
                 longitude: -74.0126,
               },
+              logo: "https://www.fidimezzanine.com/logo/FIDI%20Mezzanine.png",
               image: "https://www.fidimezzanine.com/og-image.jpg",
               sameAs: [
                 "https://www.instagram.com/fidimezzanine/",
@@ -158,7 +159,37 @@ export default function RootLayout({
                   name: "Floor to Ceiling Windows",
                   value: true,
                 },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  name: "In-House Kitchen",
+                  value: true,
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  name: "Surround Sound Audio",
+                  value: true,
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  name: "Private Call Booths",
+                  value: true,
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  name: "Bleacher Style Seating",
+                  value: true,
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  name: "Designer Lounge Furniture",
+                  value: true,
+                },
               ],
+              parentOrganization: {
+                "@type": "Organization",
+                name: "MMEink",
+                email: "info@mmeink.com",
+              },
               hasMap:
                 "https://maps.google.com/?q=55+Broadway+New+York+NY+10006",
               containsPlace: [

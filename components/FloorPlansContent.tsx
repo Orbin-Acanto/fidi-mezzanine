@@ -50,7 +50,7 @@ export default function FloorPlansContent() {
 
             <div className="mt-4 max-w-3xl">
               <h1 className="font-heading text-xl font-semibold uppercase tracking-tight text-[#111111] sm:text-2xl md:text-4xl">
-                FiDi Mezzanine Venue Floor Plan
+                FiDi Mezzanine Event Venue Floor Plan
               </h1>
               <p className="mt-3 max-w-2xl text-sm leading-7 text-[#5f5a52] md:text-base">
                 View the complete layout of our Manhattan event venue. Download
@@ -69,7 +69,7 @@ export default function FloorPlansContent() {
                 <div className="relative aspect-[4/3] md:aspect-[16/11]">
                   <Image
                     src="/plan/Mezzanine Floor Plan.jpg"
-                    alt="The Mezzanine Venue Floor Plan"
+                    alt="FiDi Mezzanine floor plan at 55 Broadway showing the event rooms"
                     fill
                     priority
                     sizes="(max-width: 1024px) 100vw, 70vw"
