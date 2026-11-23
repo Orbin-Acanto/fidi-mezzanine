@@ -41,12 +41,12 @@ const groups: { topic: string; faqs: Faq[] }[] = [
     faqs: [
       {
         q: "How many guests can FiDi Mezzanine hold?",
-        a: "FiDi Mezzanine holds up to 400 guests for a standing reception and up to 150 guests for a seated dinner. The venue covers 6,300 square feet at 55 Broadway.",
+        a: "FiDi Mezzanine holds up to 400 guests for a standing reception. For a seated dinner it holds 200 guests with a dance floor or 300 without one. The venue covers 6,300 square feet at 55 Broadway.",
         link: { href: "/floor-plans", label: "See the floor plan" },
       },
       {
         q: "What spaces does the venue have?",
-        a: "The venue has six spaces: the Main Bar, Lobby, Reading Room, Conference Room, Dining Room and Meeting Room. Each one can be used on its own or together with the others, so the layout can fit your event.",
+        a: "The venue has four event rooms: the Reading Room, Conference Room, Dining Room and Meeting Room. The Lobby and Main Bar are shared areas that connect them. Rooms can be used on their own or together, so the layout can fit your event.",
         link: { href: "/#rooms", label: "View the rooms" },
       },
       {
@@ -74,6 +74,14 @@ const groups: { topic: string; faqs: Faq[] }[] = [
         a: "Yes, catering is provided in house. The venue has its own kitchen, and the catering is handled by the same MMEink team that runs your event.",
       },
       {
+        q: "Can we bring our own caterer?",
+        a: "Yes, outside caterers are allowed at FiDi Mezzanine. Let the team know when you book so they can plan the setup with your caterer.",
+      },
+      {
+        q: "Are kosher and other dietary options available?",
+        a: "Yes, kosher and other dietary options are available. Tell the team about your guests' needs when you plan the menu.",
+      },
+      {
         q: "Is there a bar at the venue?",
         a: "Yes, the venue has a Main Bar and offers in-house bar service.",
         link: { href: "/#rooms", label: "See the Main Bar" },
@@ -98,7 +106,7 @@ const groups: { topic: string; faqs: Faq[] }[] = [
       },
       {
         q: "Can I host a wedding at FiDi Mezzanine?",
-        a: "Yes, FiDi Mezzanine hosts wedding ceremonies and receptions. Catering, bar, decor, staging and coordination are handled in house, for up to 150 guests seated or 400 guests standing.",
+        a: "Yes, FiDi Mezzanine hosts wedding ceremonies and receptions. Catering, bar, decor, staging and coordination are handled in house, for up to 400 guests standing, or 200 seated with a dance floor or 300 seated without one.",
       },
       {
         q: "Is FiDi Mezzanine a good fit for corporate events?",
@@ -106,7 +114,7 @@ const groups: { topic: string; faqs: Faq[] }[] = [
       },
       {
         q: "Can I book the venue for a birthday or private party?",
-        a: "Yes, FiDi Mezzanine hosts birthday parties, anniversaries and other private celebrations. Parties can be up to 400 guests standing or 150 guests seated.",
+        a: "Yes, FiDi Mezzanine hosts birthday parties, anniversaries and other private celebrations. Parties can be up to 400 guests standing, or 200 seated with a dance floor or 300 seated without one.",
       },
       {
         q: "Is the venue available for film and TV shoots?",
@@ -126,6 +134,14 @@ const groups: { topic: string; faqs: Faq[] }[] = [
         q: "Which subway stations are closest?",
         a: "The closest subway stations are Bowling Green (4/5 trains) and Wall Street (2/3 and 4/5 trains). Rector Street (1 and R trains) is also nearby.",
       },
+      {
+        q: "Is there parking?",
+        a: "Yes, parking is available for guests. Ask the team for details when you book.",
+      },
+      {
+        q: "Is the venue wheelchair accessible?",
+        a: "Yes, the venue is wheelchair accessible with elevator access. Share any accessibility needs with the team in advance.",
+      },
     ],
   },
   {
@@ -133,8 +149,13 @@ const groups: { topic: string; faqs: Faq[] }[] = [
     faqs: [
       {
         q: "How do I book FiDi Mezzanine?",
-        a: "Contact the team by phone at 212-971-5353, by email at info@mmeink.com, or through the contact form on the website. The team will reply with availability and next steps.",
+        a: "Contact the team by phone at 877.885.0705, by email at info@fidimezzanine.com, or through the contact form on the website. The team will reply with availability and next steps.",
         link: { href: "/#contact", label: "Go to the contact form" },
+      },
+      {
+        q: "Can I tour the venue before booking?",
+        a: "Yes, you can schedule a tour with the team. You can also review the floor plan and brochure online first.",
+        link: { href: "/floor-plans", label: "See the floor plan" },
       },
       {
         q: "How much does it cost to rent FiDi Mezzanine?",
@@ -194,7 +215,7 @@ export default function FaqPage() {
           <p className="mt-5 max-w-2xl text-base leading-8 text-[#5f5a52] md:text-lg">
             Answers to common questions about FiDi Mezzanine, an event venue at
             55 Broadway in Manhattan&apos;s Financial District. Can&apos;t find
-            what you need? Call 212-971-5353 or email info@mmeink.com.
+            what you need? Call 877.885.0705 or email info@fidimezzanine.com.
           </p>
         </div>
       </section>

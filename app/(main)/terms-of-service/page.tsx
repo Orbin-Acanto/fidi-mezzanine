@@ -137,14 +137,14 @@ export default function TermsOfServicePage() {
               <strong>FiDi Mezzanine</strong>
             </p>
             <p>55 Broadway, New York, NY 10006</p>
-            <p>Phone: 212-971-5353</p>
+            <p>Phone: 877.885.0705</p>
             <p>
               Email:{" "}
               <a
-                href="mailto:info@mmeink.com"
+                href="mailto:info@fidimezzanine.com"
                 className="text-primary hover:underline"
               >
-                info@mmeink.com
+                info@fidimezzanine.com
               </a>
             </p>
           </div>

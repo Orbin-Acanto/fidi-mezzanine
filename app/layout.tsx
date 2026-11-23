@@ -100,8 +100,8 @@ export default function RootLayout({
               description:
                 "FiDi Mezzanine is Manhattan's premier full-service event venue at 55 Broadway in New York's Financial District. Hosting corporate events, weddings, private parties and milestone celebrations for up to 400 guests.",
               url: "https://www.fidimezzanine.com",
-              telephone: "+12129715353",
-              email: "info@mmeink.com",
+              telephone: "+18778850705",
+              email: "info@fidimezzanine.com",
               priceRange: "$$$",
               address: {
                 "@type": "PostalAddress",
@@ -188,7 +188,7 @@ export default function RootLayout({
               parentOrganization: {
                 "@type": "Organization",
                 name: "MMEink",
-                email: "info@mmeink.com",
+                email: "info@fidimezzanine.com",
               },
               hasMap:
                 "https://maps.google.com/?q=55+Broadway+New+York+NY+10006",

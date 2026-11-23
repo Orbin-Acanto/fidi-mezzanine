@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const highlights = [
   "6,300 sq ft across 6 distinct rooms",
-  "Up to 400 guests standing, 150 seated",
+  "Up to 400 standing, 200 seated with dance floor, 300 without",
   "Full service catering, decor and staging",
   "Designer interiors and lounge furniture",
   "Floor to ceiling windows with natural light",
@@ -54,7 +54,7 @@ export default function FloorPlansContent() {
               </h1>
               <p className="mt-3 max-w-2xl text-sm leading-7 text-[#5f5a52] md:text-base">
                 View the complete layout of our Manhattan event venue. Download
-                the floor plan and see how our six rooms can be configured for
+                the floor plan and see how our four rooms can be configured for
                 your corporate event, wedding reception, or private party at 55
                 Broadway.
               </p>

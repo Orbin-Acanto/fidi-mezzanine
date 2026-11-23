@@ -85,8 +85,8 @@ const siteConfig: SiteConfig = {
       full: "55 Broadway, New York, NY 10006",
     },
     contact: {
-      phone: "212-971-5353",
-      email: "info@mmeink.com",
+      phone: "877.885.0705",
+      email: "info@fidimezzanine.com",
     },
     social: {
       facebook: "https://www.facebook.com/themezzaninenyc",
@@ -94,7 +94,7 @@ const siteConfig: SiteConfig = {
     },
     capacity: {
       max: 400,
-      seated: 150,
+      seated: 200,
     },
     squareFeet: 6300,
     spaces: 4,

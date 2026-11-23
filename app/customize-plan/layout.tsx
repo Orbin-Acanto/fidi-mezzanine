@@ -3,13 +3,13 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Event Floor Plan Designer',
   description:
-    'Plan your event layout at FiDi Mezzanine. Arrange seating and furniture across six rooms at 55 Broadway and export your floor plan as a PDF.',
+    'Plan your event layout at FiDi Mezzanine. Arrange seating and furniture across four rooms at 55 Broadway and export your floor plan as a PDF.',
   keywords:
     'FiDi Mezzanine event planner, customize floor plan NYC, interactive event planner Manhattan, venue layout tool, event design tool, floor plan designer Financial District, PDF floor plan export, seating arrangement tool, event planning NYC, customize venue layout, Manhattan event planner tool, venue visualization tool, 55 Broadway event planner',
   openGraph: {
     title: 'Customize Your Event Plan | FiDi Mezzanine NYC Interactive Tool',
     description:
-      'Design your event layout with our interactive floor plan tool. Customize seating, visualize your setup across six rooms, and export your plan as PDF for your Manhattan event at 55 Broadway.',
+      'Design your event layout with our interactive floor plan tool. Customize seating, visualize your setup across four rooms, and export your plan as PDF for your Manhattan event at 55 Broadway.',
     url: 'https://www.fidimezzanine.com/customize-plan',
     siteName: 'FiDi Mezzanine NYC',
     images: [
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Customize Event Plan | FiDi Mezzanine NYC',
     description:
-      'Design your event with our interactive floor plan tool. Customize layouts across six rooms and export your plan as PDF.',
+      'Design your event with our interactive floor plan tool. Customize layouts across four rooms and export your plan as PDF.',
     images: ['https://www.fidimezzanine.com/og-image.jpg'],
   },
   alternates: {

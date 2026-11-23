@@ -1,25 +1,25 @@
 # FiDi Mezzanine
 
-> FiDi Mezzanine is a full service event venue at 55 Broadway, New York, NY 10006, in Manhattan's Financial District. It covers 6,300 square feet and holds up to 400 guests standing or 150 guests for a seated dinner. Catering, bar, decor, staging and production are handled in house by the MMEink team.
+> FiDi Mezzanine is a full service event venue at 55 Broadway, New York, NY 10006, in Manhattan's Financial District. It covers 6,300 square feet and holds up to 400 guests standing, or 200 seated with a dance floor and 300 seated without one, for a seated dinner. Catering, bar, decor, staging and production are handled in house by the MMEink team.
 
 ## Venue facts
 - Name: FiDi Mezzanine
 - Address: 55 Broadway, New York, NY 10006
 - Neighborhood: Financial District (FiDi), Lower Manhattan
 - Size: 6,300 square feet
-- Capacity: up to 400 guests standing, up to 150 guests seated for dinner
+- Capacity: up to 400 guests standing; seated dinner 200 with a dance floor or 300 without
 - Style: industrial chic, floor to ceiling windows, designer lounge furniture, chandeliers, bleacher style seating
 - Features: in-house kitchen, surround sound audio, private call booths, two multi-person bathrooms
 - Operated by: MMEink
 
 ## Spaces
-- Main Bar
-- Lobby
+Four event rooms:
 - Reading Room
 - Conference Room
 - Dining Room
 - Meeting Room
-Each space can be used on its own or together with the others.
+Shared areas: Lobby and Main Bar.
+Rooms can be used on their own or together.
 
 ## Event types
 - Corporate events: conferences, product launches, company parties, corporate galas
@@ -39,8 +39,8 @@ Clients work with one team from start to finish instead of coordinating separate
 - Subway: Bowling Green (4/5), Wall Street (2/3 and 4/5), Rector Street (1 and R)
 
 ## Contact and booking
-- Phone: 212-971-5353
-- Email: info@mmeink.com
+- Phone: 877.885.0705
+- Email: info@fidimezzanine.com
 - Booking and inquiries: https://www.fidimezzanine.com/#contact
 - Pricing is not published. Contact the team for availability and pricing.
 - Instagram: https://www.instagram.com/fidimezzanine/
@@ -52,3 +52,10 @@ Clients work with one team from start to finish instead of coordinating separate
 - [Floor Plans](https://www.fidimezzanine.com/floor-plans): venue floor plan with a downloadable PDF
 - [Floor Plan Designer](https://www.fidimezzanine.com/customize-plan): online tool to lay out tables, seating, bars, staging and decor, with PDF export
 - [Venue Brochure](https://www.fidimezzanine.com/brochure): flip-through brochure and PDF download
+
+## Guest services
+- Parking: available for guests
+- Accessibility: wheelchair accessible with elevator access
+- Outside caterers: allowed
+- Kosher and other dietary options: available
+- Tours: available on request
