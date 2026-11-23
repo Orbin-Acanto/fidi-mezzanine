@@ -4,7 +4,7 @@ import FloorPlansContent from "@/components/FloorPlansContent";
 export const metadata: Metadata = {
   title: "Floor Plans",
   description:
-    "View the floor plan of FiDi Mezzanine, Manhattan's premier event venue at 55 Broadway. 6,300 sq ft across 6 rooms for corporate events, weddings and private parties in New York City.",
+    "See the FiDi Mezzanine floor plan: 6,300 sq ft across six rooms at 55 Broadway, Manhattan, for corporate events, weddings and private parties.",
   keywords: [
     "event venue floor plan Manhattan",
     "FiDi Mezzanine layout",
@@ -31,6 +31,16 @@ export const metadata: Metadata = {
         alt: "FiDi Mezzanine floor plan, Manhattan event venue at 55 Broadway",
       },
     ],
+    siteName: "FiDi Mezzanine",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Floor Plans | FiDi Mezzanine NYC",
+    description:
+      "See the FiDi Mezzanine floor plan: 6,300 sq ft across six rooms at 55 Broadway in Manhattan.",
+    images: ["https://www.fidimezzanine.com/og-image.jpg"],
   },
 };
 

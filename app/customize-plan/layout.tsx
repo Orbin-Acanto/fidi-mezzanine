@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Customize Your Event Plan | FiDi Mezzanine NYC Interactive Floor Plan Designer',
+  title: 'Event Floor Plan Designer',
   description:
-    'Design your perfect event at FiDi Mezzanine with our interactive floor plan customization tool. Arrange seating, plan layouts, visualize your setup across our six rooms, and export your custom event plan as PDF. Free event planning tool for Manhattan corporate events, weddings, and private celebrations at 55 Broadway.',
+    'Plan your event layout at FiDi Mezzanine. Arrange seating and furniture across six rooms at 55 Broadway and export your floor plan as a PDF.',
   keywords:
     'FiDi Mezzanine event planner, customize floor plan NYC, interactive event planner Manhattan, venue layout tool, event design tool, floor plan designer Financial District, PDF floor plan export, seating arrangement tool, event planning NYC, customize venue layout, Manhattan event planner tool, venue visualization tool, 55 Broadway event planner',
   openGraph: {
@@ -219,6 +219,7 @@ export default function CustomizePlanLayout({
           }),
         }}
       />
+      <h1 className="sr-only">Event Floor Plan Designer for FiDi Mezzanine</h1>
       {children}
     </>
   );

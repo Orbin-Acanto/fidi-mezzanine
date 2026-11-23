@@ -101,9 +101,9 @@ const siteConfig: SiteConfig = {
   },
 
   seo: {
-    title: "FiDi Mezzanine | Premier Event Venue in Manhattan Financial District",
+    title: "FiDi Mezzanine | Manhattan Event Venue at 55 Broadway",
     description:
-      "FiDi Mezzanine is Manhattan's premier event venue at 55 Broadway. Full-service corporate events, weddings, private parties and milestone celebrations for up to 400 guests in the heart of New York's Financial District.",
+      "Event venue at 55 Broadway in Manhattan's Financial District. Corporate events, weddings and private parties for up to 400 guests, with full in-house service.",
     keywords: [
       "event venue NYC",
       "event venue Manhattan",

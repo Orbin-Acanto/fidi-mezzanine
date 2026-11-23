@@ -5,7 +5,7 @@ import BrochureClient from "./BrochureClient";
 export const metadata: Metadata = {
   title: "Venue Brochure",
   description:
-    "Browse the FiDi Mezzanine venue brochure. Discover our full-service event space at 55 Broadway in Manhattan's Financial District. Corporate events, weddings, and private parties in New York City.",
+    "Browse the FiDi Mezzanine brochure: 6,300 sq ft of event space at 55 Broadway in Manhattan for corporate events, weddings and private parties.",
   keywords: [
     "event venue brochure Manhattan",
     "FiDi Mezzanine brochure",
@@ -30,6 +30,16 @@ export const metadata: Metadata = {
         alt: "FiDi Mezzanine venue brochure, Manhattan event space at 55 Broadway",
       },
     ],
+    siteName: "FiDi Mezzanine",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Venue Brochure | FiDi Mezzanine NYC",
+    description:
+      "Browse the FiDi Mezzanine venue brochure. Full-service event space at 55 Broadway in Manhattan for up to 400 guests.",
+    images: ["https://www.fidimezzanine.com/og-image.jpg"],
   },
 };
 

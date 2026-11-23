@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: "Page Not Found",
+  description: "This page could not be found on the FiDi Mezzanine website.",
   robots: {
     index: false,
     follow: false,

@@ -22,6 +22,7 @@ const gildaDisplay = Gilda_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.fidimezzanine.com"),
   title: {
     template: "%s | FiDi Mezzanine NYC",
     default: siteConfig.seo.title,
@@ -50,9 +51,6 @@ export const metadata: Metadata = {
     title: siteConfig.seo.title,
     description: siteConfig.seo.description,
     images: ["https://www.fidimezzanine.com/og-image.jpg"],
-  },
-  alternates: {
-    canonical: "https://www.fidimezzanine.com",
   },
   robots: {
     index: true,

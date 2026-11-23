@@ -5,6 +5,11 @@ import VideoSection from '@/components/VideoSection';
 import FeatureSection from '@/components/FeatureSection';
 import GallerySection from '@/components/GallerySection';
 import ContactSection from '@/components/ContactSection';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+};
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -72,6 +77,7 @@ const faqSchema = {
 export default function Home() {
   return (
     <>
+      <link rel="preload" as="image" href="/hero-poster.jpg" fetchPriority="high" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
