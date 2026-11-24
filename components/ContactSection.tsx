@@ -11,6 +11,11 @@ export default function ContactSection() {
         src="https://www.google.com/recaptcha/api.js"
         strategy="lazyOnload"
       />
+      {/* Copies the Zoho form to FiDi CRM; its cutover switch lives in that script. */}
+      <Script
+        src="https://www.mmeink.com/fidi-crm/leads.php"
+        strategy="lazyOnload"
+      />
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="max-w-4xl mx-auto text-center mb-16">
